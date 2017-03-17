@@ -73,7 +73,7 @@
 							} else {
 						%>
 
-						<li class="gnb01 "><a href="update.jsp" style="color: white;">내
+						<li class="gnb01 "><a href="update_before.jsp" style="color: white;">내
 								정보 수정</a></li>
 						<li class="gnb02 "><a href="insert.jsp" style="color: white;">수강신청</a></li>
 						<li class="gnb03 "><a href="select.jsp" style="color: white;">내
@@ -89,5 +89,3 @@
 			</header>
 		</div>
 	</div>
-</body>
-</html>

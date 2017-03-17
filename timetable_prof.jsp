@@ -66,7 +66,7 @@ if (session_id == null){ %>
       <th>Thursday</th>
       <th>Friday</th>
     </tr>
-    <% for (int i = 0;i<7;i++) {%>
+    <% for (int i = 0;i<8;i++) {%>
     <tr>
       <td class='time'><%=i+1 %></td>
       <%for (int j = 0;j<5;j++) {

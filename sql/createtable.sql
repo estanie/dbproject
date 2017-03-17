@@ -1,4 +1,4 @@
- CREATE TABLE STUDENTS (
+CREATE TABLE STUDENTS (
     s_id NUMBER(10) CONSTRAINT s_pk PRIMARY KEY,
     s_pwd VARCHAR(20),
     s_name VARCHAR(10),
@@ -15,7 +15,7 @@
     p_email VARCHAR(50)
  );
  
- CREATE TABLE COURSE (
+CREATE TABLE COURSE (
     c_id VARCHAR(4),
     c_id_no NUMBER(2),
     c_unit NUMBER(1),
@@ -29,8 +29,8 @@ CREATE TABLE teach (
     p_id NUMBER(10),
     t_year NUMBER(4),
     t_semester VARCHAR(1),
-    t_time NUMBER(2),--월/수, 화,목, 금 교시
-    t_day NUMBER(1), --1 : 월/수, 2: 화/목, 3: 금
+    t_time NUMBER(2),
+    t_day NUMBER(1),
     t_max NUMBER(3),
     t_where VARCHAR(20),
     CONSTRAINT t_c_id_fk FOREIGN KEY (c_id,c_id_no) REFERENCES COURSE(c_id,c_id_no),

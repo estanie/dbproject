@@ -1,15 +1,15 @@
 <%@ page contentType="text/html; charset=UTF-8"%>
 <%@ page import="java.sql.*"%>
 <%@ include file="top.jsp"%>
-<%@ include file="dbconfig.jsp" %>
-		<table width="75%" align="center" border>
-			<thead>
-				<th>학번</th>
-				<th>이름</th>
-				<th>전공</th>
-			</thead>
-			<tbody>
-<%
+<%@ include file="dbconfig.jsp"%>
+<table width="75%" align="center" border>
+	<thead>
+		<th>학번</th>
+		<th>이름</th>
+		<th>전공</th>
+	</thead>
+	<tbody>
+		<%
 	ResultSet rs = null;
 	String c_id = request.getParameter("c_id");
 	int c_id_no = Integer.parseInt(request.getParameter("c_id_no"));
@@ -26,15 +26,15 @@
 		int s_id = rs.getInt("s_id");
 		%>
 		<tr>
-		<td><%=s_id %></td>
-		<td><%=s_name %></td>
-		<td><%=s_major %></td>
+			<td align="center"><%=s_id %></td>
+			<td align="center"><%=s_name %></td>
+			<td align="center"><%=s_major %></td>
 		</tr>
 		<%
 	}
 	stmt.close();
 	myConn.close();
 %>
-</tbody>
+	</tbody>
 </table>
 <%@ include file="footer.jsp"%>
