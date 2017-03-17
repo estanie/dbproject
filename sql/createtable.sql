@@ -35,7 +35,7 @@ CREATE TABLE teach (
     t_where VARCHAR(20),
     CONSTRAINT t_c_id_fk FOREIGN KEY (c_id,c_id_no) REFERENCES COURSE(c_id,c_id_no),
     CONSTRAINT t_p_id_fk FOREIGN KEY (p_id) REFERENCES PROFESSOR(p_id),
-    CONSTRAINT t_pk PRIMARY KEY(p_id, t_year, t_semester, t_time, t_day)
+    CONSTRAINT t_pk PRIMARY KEY(c_id, c_id_no, t_year, t_semester)
  );
  
  CREATE TABLE ENROLL (
@@ -45,10 +45,10 @@ CREATE TABLE teach (
     e_year NUMBER(4),
     e_semester NUMBER(1),
     CONSTRAINT e_s_id_pk FOREIGN KEY (s_id) REFERENCES STUDENTS(s_id),
-    CONSTRAINT e_c_id_pk FOREIGN KEY (c_id,c_id_no) REFERENCES COURSE(c_id,c_id_no),
-    CONSTRAINT e_pk PRIMARY KEY(e_year, e_semester, s_id, c_id)
+    CONSTRAINT e_c_id_pk FOREIGN KEY (c_id,c_id_no,e_year,e_semester) REFERENCES (c_id,c_id_no,t_year,y_semester),
+    CONSTRAINT e_pk PRIMARY KEY(s_id, c_id,e_year, e_semester)
  );
- 
+
  CREATE TABLE BOARD(
     b_no NUMBER(10) CONSTRAINT b_pk PRIMARY KEY,
     b_name VARCHAR2(20),
@@ -71,3 +71,5 @@ CREATE TABLE COMMENTTABLE(
     comment_ref NUMBER(10),
     CONSTRAINT comment_fk FOREIGN KEY (comment_ref) REFERENCES BOARD(b_no)
 );
+
+commit;
