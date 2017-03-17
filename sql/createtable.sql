@@ -28,7 +28,7 @@ CREATE TABLE teach (
     c_id_no NUMBER(2),
     p_id NUMBER(10),
     t_year NUMBER(4),
-    t_semester VARCHAR(1),
+    t_semester NUMBER(1),
     t_time NUMBER(2),
     t_day NUMBER(1),
     t_max NUMBER(3),
@@ -38,14 +38,14 @@ CREATE TABLE teach (
     CONSTRAINT t_pk PRIMARY KEY(c_id, c_id_no, t_year, t_semester)
  );
  
- CREATE TABLE ENROLL (
+ CREATE TABLE enroll (
     s_id NUMBER(10) ,
     c_id VARCHAR(4),
     c_id_no NUMBER(2),
     e_year NUMBER(4),
     e_semester NUMBER(1),
     CONSTRAINT e_s_id_pk FOREIGN KEY (s_id) REFERENCES STUDENTS(s_id),
-    CONSTRAINT e_c_id_pk FOREIGN KEY (c_id,c_id_no,e_year,e_semester) REFERENCES (c_id,c_id_no,t_year,y_semester),
+    CONSTRAINT e_c_id_pk FOREIGN KEY (c_id,c_id_no,e_year,e_semester) REFERENCES teach(c_id,c_id_no,t_year,t_semester),
     CONSTRAINT e_pk PRIMARY KEY(s_id, c_id,e_year, e_semester)
  );
 
