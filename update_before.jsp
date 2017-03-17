@@ -13,7 +13,7 @@
 		<div id="content" class="login">
 			<div class="login_box">
 				<form method="post" action="update.jsp">
-					<fieldset class="formLogin">
+					<fieldset class="formLogin" align="center">
 						<div width="40%">
 							<h2>본인 확인을 위해 현재 비밀번호를 입력해주세요. </h2>
 							<table class="inputTable">
@@ -29,10 +29,9 @@
 									} else { %>
 								<tbody>
 									<tr>
-										<td>비밀번호 입력</td>
 										<td class="input"><input type="password" id="userpw"
 											name="userpw" title="비밀번호" class="formText formText_Pass"
-											onkeypress="if(event.keyCode=='13'){userLogin();}" /></td>
+											onkeypress="if(event.keyCode=='13'){userLogin();}" placeholder="비밀번호를 입력해주세요." /></td>
 									</tr>
 									<tr>
 										<td colspan="3" class="blank02"></td>

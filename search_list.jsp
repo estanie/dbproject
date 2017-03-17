@@ -17,14 +17,22 @@
 			</div>
 			<div id="content" class="myPoint">
 				<%
+					
 					request.setCharacterEncoding("utf-8");
+					int keyfield = Integer.parseInt(request.getParameter("keyfield"));
 					String searchKey = request.getParameter("searchKey");
 					PreparedStatement pstmt = null;
 					ResultSet rs = null;
+					String sql = null;
 
-					String sql = "select * from board where b_name =?";
+					if (keyfield==1){
+						sql = "select * from board where b_name like ?";
+					}
+					else {
+						sql = "select * from board where b_title like ?";
+					}
 					pstmt = myConn.prepareStatement(sql);
-					pstmt.setString(1, searchKey);
+					pstmt.setString(1, "%"+searchKey+"%");
 					rs = pstmt.executeQuery();
 					String fid = null;
 					String fpw = null;

@@ -74,17 +74,17 @@ function writeCheck()
   <tr>
    <td>
     <table width="100%" cellpadding="0" cellspacing="0" border="0">
-     <tr style="background:url('table_mid.gif') repeat-x; text-align:center;">
-      <td width="5"><img src="table_left.gif" width="5" height="30" /></td>
+     <tr style="background:url('image/table_mid.gif') repeat-x; text-align:center;">
+      <td width="5"><img src="image/table_left.gif" width="5" height="30" /></td>
       <td>글쓰기</td>
-      <td width="5"><img src="table_right.gif" width="5" height="30" /></td>
+      <td width="5"><img src="image/table_right.gif" width="5" height="30" /></td>
      </tr>
     </table>
    <table>
      <tr>
       <td>&nbsp;</td>
       <td align="center">제목</td>
-      <td><input name="title" size="50" maxlength="100"></td>
+      <td><input name="title" size="50" maxlength="100" placeholder="강의명/교수님 으로 적어주세요."></td>
       <td>&nbsp;</td>
      </tr>
      <tr height="1" bgcolor="#dddddd"><td colspan="4"></td></tr>
@@ -98,7 +98,7 @@ function writeCheck()
     <tr>
       <td>&nbsp;</td>
       <td align="center">비밀번호</td>
-      <td><input name="password" size="50" maxlength="50"></td>
+      <td><input type="password" name="password" size="50" maxlength="50"></td>
       <td>&nbsp;</td>
      </tr>
      <tr height="1" bgcolor="#dddddd"><td colspan="4"></td></tr>

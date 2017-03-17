@@ -160,7 +160,7 @@ input.file_add{filter:alpha(opacity:0); opacity:0; width:52px; height:30px; }
 #sitemapWrap .sitemap>dd dt a{font:bold 18px/25px NanumGothic;color:#303030;}
 #sitemapWrap .sitemap>dd dd a{font-size:14px;}
 
-#footerwrap{width:100%;background:#2c2a29 url('images/bg_foot.gif') repeat-x 0 0;}
+#footerwrap{width:100%;background:#2c2a29 url('images/bg_foot.gif') repeat-x 0 0;margin-top:120px;}
 #footer{position:relative;width:100%;min-width:320px;max-width:1220px;height:162px;margin:0 auto;padding:0 10px;box-sizing:border-box;}
 #footer .footermenu{float:left;overflow:hidden;padding:15px 0 37px;}
 #footer .footermenu li{float:left;padding-left:22px;background:url('images/foot_menu_section.gif') no-repeat 12px 3px;}
@@ -527,8 +527,7 @@ input.file_add{filter:alpha(opacity:0); opacity:0; width:52px; height:30px; }
 .member .oneID_info02 dl{float:right;width:81.02%;padding:28px 0 25px;}
 .member .oneID_info02 dt{margin-bottom:15px;font-size:20px;line-height:22px;color:#303030;}
 .member .oneID_info02 dd{padding:0 50px 0 8px;line-height:22px;background:url('images/icon_dot01.gif') no-repeat 0 10px;}
-.member .login{border-top:1px solid #000;}
-.member .login_box{overflow:hidden;padding:40px 4.39%;border:1px solid #ccc;border-top:none;}
+.member .login_box{overflow:hidden;padding:40px 4.39%;border:1px solid #ccc;}
 .member .login_box fieldset{float:left;width:50.77%;padding-top:58px;}
 .member .login_box fieldset h2{font-size:20px;color:#303030;text-align:center;}
 .member .login_box fieldset table{width:73.43%;margin:0 auto;}
@@ -892,7 +891,7 @@ input.file_add{filter:alpha(opacity:0); opacity:0; width:52px; height:30px; }
 .postPopSearch .result .resultBox td.post{padding-right:10px;}
 
 /* 크롬 */
-@media screen and (-webkit-min-device-pixel-ratio:0) {
+/*@media screen and (-webkit-min-device-pixel-ratio:0) {
 .main .cont01_r .storeSearch h2 span input{margin-top:10px;}
 .store .storeGlobalList .sotoreSearch fieldset .searchForm th input{margin-top:5px;}
 }
@@ -907,3 +906,4 @@ input.file_add{filter:alpha(opacity:0); opacity:0; width:52px; height:30px; }
 @media (max-width:1180px){
 .company .recruit .cont03 li dl{width:90%;}
 }
+*/

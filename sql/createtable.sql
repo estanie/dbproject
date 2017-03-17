@@ -45,7 +45,7 @@ CREATE TABLE teach (
     e_year NUMBER(4),
     e_semester NUMBER(1),
     CONSTRAINT e_s_id_pk FOREIGN KEY (s_id) REFERENCES STUDENTS(s_id),
-    CONSTRAINT e_c_id_pk FOREIGN KEY (c_id,c_id_no,e_year,e_semester) REFERENCES teach(c_id,c_id_no,t_year,t_semester),
+    CONSTRAINT e_c_id_pk FOREIGN KEY (c_id,c_id_no,e_year,e_semester) REFERENCES teach(c_id,c_id_no,t_year,t_semester) ON DELETE RESTRICT ON UPDATE CASCADE,
     CONSTRAINT e_pk PRIMARY KEY(s_id, c_id,e_year, e_semester)
  );
 

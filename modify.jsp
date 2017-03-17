@@ -1,11 +1,9 @@
 <%@ page contentType="text/html; charset=UTF-8"%>
 <%@ page import="java.sql.*"%>
 <%@ page import="java.util.Date"%>
-<html>
 <head>
 <title>게시판</title>
 </head>
-<body>
 	<%@ include file="top.jsp"%>
 	<%@ include file="dbconfig.jsp"%>
 	<script language="javascript">

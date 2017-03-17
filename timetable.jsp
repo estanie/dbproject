@@ -1,10 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-    <%@ page import="java.io.*"%>
+	pageEncoding="UTF-8"%>
+<%@ page import="java.io.*"%>
 <%@ page import="java.sql.*"%>
 <%@ page import="java.util.Random"%>
 <%@ include file="top.jsp"%>
-<%@ include file="dbconfig.jsp" %>
+<%@ include file="dbconfig.jsp"%>
 <link rel="stylesheet" href="css/table.css">
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <head>
@@ -76,35 +76,46 @@ if (session_id == null){ %>
 			else
 				cour[t_time][4] = cour[t_time+1][4] = new Course(c_name,t_where,p_name);
 			%>
-			
-			<%
+
+<%
 			
 		}
 	%>
-<div class='tab'>
-  <table border='0' cellpadding='0' cellspacing='0'>
-    <tr class='days'>
-      <th></th>
-      <th>Monday</th>
-      <th>Tuesday</th>
-      <th>Wednesday</th>
-      <th>Thursday</th>
-      <th>Friday</th>
-    </tr>
-    <% for (int i = 0;i<8;i++) {%>
-    <tr>
-      <td class='time'><%=i+1 %></td>
-      <%for (int j = 0;j<5;j++) {
+<div id="containerwrap">
+	<div id="container">
+		<div class="section_title">
+			<h1>
+				<span>시간표</span>
+			</h1>
+		</div>
+		<div class='tab'>
+			<table border='0' cellpadding='0' cellspacing='0'>
+				<tr class='days'>
+					<th></th>
+					<th>Monday</th>
+					<th>Tuesday</th>
+					<th>Wednesday</th>
+					<th>Thursday</th>
+					<th>Friday</th>
+				</tr>
+				<% for (int i = 0;i<8;i++) {%>
+				<tr>
+					<td class='time'><%=i+1 %></td>
+					<%for (int j = 0;j<5;j++) {
       if (cour[i][j]!=null){%>
-      <td class='mouseon <%=cour[i][j].color %>' data-tooltip='<%= cour[i][j].p_name %>'><%=cour[i][j].c_name %><br/> <%=cour[i][j].t_where %></td>
-      <% }
+					<td class='mouseon <%=cour[i][j].color %>'
+						data-tooltip='<%= cour[i][j].p_name %>'><%=cour[i][j].c_name %><br />
+						<%=cour[i][j].t_where %></td>
+					<% }
       else {%>
-      <td></td>
-      <%}} %>
-    </tr>
-    <%} %>
-  </table>
+					<td></td>
+					<%}} %>
+				</tr>
+				<%} %>
+			</table>
+		</div>
+		<% } %>
+	</div>
 </div>
-<% } %>
 
 <%@ include file="footer.jsp"%>
