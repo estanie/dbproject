@@ -1,33 +1,26 @@
-<%@ page contentType="text/html; charset=UTF-8"%>
-<%@ page import="java.sql.*"%>
-<%@ include file="top.jsp"%>
-<%
-	String c_id = request.getParameter("c_id");
-	Connection myConn = null;
-	Statement stmt = null;
-	String mySQL = null;
-	String dburl = "jdbc:oracle:thin:@localhost:1521:oracle";
-	String user = "db01";
-	String passwd = "ss2";
-	String jdbc_driver = "oracle.jdbc.driver.OracleDriver";
-	Class.forName(jdbc_driver);
-	myConn = DriverManager.getConnection(dburl, user, passwd);
-	stmt = myConn.createStatement();
-	mySQL = "delete from enroll where c_id='" + c_id + "' and s_id=" + session_id + "";
-	int re = stmt.executeUpdate(mySQL);
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<html>
 
-	if (re!=0) { %>
-		<script>
-		  alert("삭제되었습니다..");
-		  location.href="select.jsp";
-		</script>
-<% 	} else { %>
-	<script>
-		  alert("오류..");
-		  location.href="select.jsp";
-		</script>
-<% }
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>스케줄 삭제 처리</title>
+<%String delnum = request.getParameter("day");%>
+<script language="JavaScript">
+function myconfirm(){ 
+	if (confirm("정말 삭제 하시겠습니까?")){ 
+		location.href="delete_ok.jsp?day=<%=delnum%>";
+	}
+	else{ 
+	  	location.href="select.jsp"; 
+	} 
+} 
+</script>
+</head>
 
-	stmt.close();
-	myConn.close();
-%>
+<body>
+
+<script language="JavaScript">
+myconfirm();
+</script>
+</body>
+</html>

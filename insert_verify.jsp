@@ -1,31 +1,29 @@
-<%@ page contentType="text/html; charset=EUC-KR" %>
+<%@ page contentType="text/html; charset=UTF-8" %>
 <%@ page import="java.sql.*" %>
 
-<html><head><title> ╪Ж╟╜╫ец╩ ют╥б </title></head>
+<html><head><title> б╪ц╤б╟б╜б╫ц┘ц┐б╩ ц─ц■б╥ц┌ </title></head>
 <body>
 
 <%	
 	String s_id = (String)session.getAttribute("user");
 	String c_id = request.getParameter("c_id");
-	int c_id_no = Integer.parseInt(request.getParameter("c_id_no"));
+	String c_id_no =(request.getParameter("c_id_no"));
 %>
 <%		
 	Connection myConn = null;    String	result = null;	
-	String dburl  = "jdbc:oracle:thin:@db.sd.ac.kr:1521:ora9";
-	String user="db";   String passwd="db";
+	String dburl  = "jdbc:oracle:thin:@localhost:1521:orcl";
+	String user="whoo";   String passwd="1224";
 	String dbdriver = "oracle.jdbc.driver.OracleDriver";    
-
 	try {
 		Class.forName(dbdriver);
   	        myConn =  DriverManager.getConnection (dburl, user, passwd);
     } catch(SQLException ex) {
 	     System.err.println("SQLException: " + ex.getMessage());
     }
-
      CallableStatement cstmt = myConn.prepareCall("{call InsertEnroll(?,?,?,?)}");	
 	cstmt.setString(1, s_id);
 	cstmt.setString(2, c_id);
-	cstmt.setInt(3,c_id_no);
+	cstmt.setString(3,c_id_no);
 	cstmt.registerOutParameter(4, java.sql.Types.VARCHAR);	
 	try  {  	
 		cstmt.execute();

@@ -1,13 +1,30 @@
 CREATE OR REPLACE FUNCTION Date2EnrollYear(dDate IN DATE)
-/* 채워 넣자 */
+RETURN NUMBER
+IS
+	ryear NUMBER;
+	monn NUMBER;
 BEGIN
-/* 채워 넣자 */
+	ryear := TO_NUMBER(TO_CHAR(dDate, ‘YYYY’));
+	monn := TO_NUMBER(TO_CHAR(dDate, ‘MM’));
+
+	IF (monn >= 1 AND monn <= 10) THEN RETURN ryear;
+	ELSE RETURN ryear+1;
+	END IF;
 END;
 /
 
 CREATE OR REPLACE FUNCTION Date2EnrollSemester(dDate IN DATE)
-/* 채워 넣자 */
+RETURN NUMBER
+IS
+	rseme NUMBER;
+	monn NUMBER;
 BEGIN
-/* 채워 넣자 */
+	monn := TO_NUMBER(TO_CHAR(dDate, ‘MM’));
+
+	IF (monn >= 5 AND monn <= 10) THEN rseme := 2;
+	ELSE rseme := 1;
+	END IF;
+
+	RETURN rseme;
 END;
 /
