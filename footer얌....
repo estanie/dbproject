@@ -1,0 +1,42 @@
+<div class="section_cont02">
+<ul>
+<li>
+<dl>
+<dt><a href="http://www.sookmyung.ac.kr/">숙명여자대학교</a></dt>
+<dd><a href="http://www.sookmyung.ac.kr/"><img src="snow1.png" alt="" /></a></dd>
+</dl>
+</li>
+<li>
+<dl>
+<dt><a href="http://portal.sookmyung.ac.kr/irj/portal">숙명포털</a></dt>
+<dd><a href="http://portal.sookmyung.ac.kr/irj/portal"><img src="snow2.png" alt="" /></a></dd>
+</dl>
+</li>
+<li>
+<dl>
+<dt><a href="http://snowboard.sookmyung.ac.kr/">SnowBoard</a></dt>
+<dd><a href="http://snowboard.sookmyung.ac.kr/"><img src="snow3.png" alt="" /></a></dd>
+</dl>
+</li>
+<li>
+<dl>
+<dt><a href="http://snowe.sookmyung.ac.kr/bbs5/index">SnowWe</a></dt>
+<dd><a href="http://snowe.sookmyung.ac.kr/bbs5/index"><img src="snow4.png" alt="" /></a></dd>
+</dl>
+</li>
+</ul>
+</div>
+</div>
+<br/><br/><br/>
+<script type="text/javascript" src="common.js"></script>
+<div id="footerwrap">
+<footer id="footer">
+<p class="addr"><br/>
+서울특별시 용산구 청파로 47길<span></span>
+</p>
+<p class="copyright">COPYRIGHT (c) SOOKMYUNG UNIV. ALL RIGHTS RESERVED.</p>
+<div class="btn_top"><a href="#top"><img src="btn_top.gif" alt="TOP" /></a></div>
+</footer>
+</div>
+</body>
+</html>
