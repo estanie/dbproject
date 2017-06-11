@@ -1,18 +1,14 @@
 <%@ page contentType="text/html; charset=UTF-8"%>
 <%@ page import="java.sql.*"%>
+<%@ include file="dbconfig.jsp" %>
 <%
-	String userID = request.getParameter("userID");
-	String userPassword = request.getParameter("userPassword");
+
+	int userID = Integer.parseInt(request.getParameter("userid"));
+	String userPassword = request.getParameter("userpw");
 	Connection myConn = null;
 	Statement stmt = null;
 	String mySQL = null;
 	String mySQL2 = null;
-	String dburl = "jdbc:oracle:thin:@localhost:1521:oracle";
-	String user = "db01";
-	String passwd = "ss2";
-	String jdbc_driver = "oracle.jdbc.driver.OracleDriver";
-	Class.forName(jdbc_driver);
-	myConn = DriverManager.getConnection(dburl, user, passwd);
 	stmt = myConn.createStatement();
 	mySQL = "select s_id from students where s_id='" + userID + "' and s_pwd='" + userPassword + "'";
 	ResultSet rs = stmt.executeQuery(mySQL);

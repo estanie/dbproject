@@ -2,9 +2,7 @@
 <%@ page import="java.sql.*"%>
 
 <%
-		Connection conn = null;
-		Statement stmt = null;
-		String mySQL = null;
+		Connection myConn = null;
 		String dburl = "jdbc:oracle:thin:@localhost:1521:oracle";
 		String user = "db01";
 		String pwd = "ss2";
@@ -14,6 +12,5 @@
 		String user_pwd = request.getParameter("userPassword");
 
 		Class.forName(jdbc_driver);
-		conn = DriverManager.getConnection(dburl, user, pwd);
-		stmt = conn.createStatement();
+		myConn = DriverManager.getConnection(dburl, user, pwd);
 %>

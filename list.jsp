@@ -3,6 +3,8 @@
         <%@ page import="java.util.Date" %>
 <%@ page import="java.io.*" %>
 <%@ page import="java.sql.*" %>
+<%@ include file="top.jsp" %>
+<%@ include file="dbconfig.jsp" %>
 <!doctype html>
 <html>
 <head>
@@ -11,19 +13,12 @@
 <%if (session.getAttribute("user") == null) {%>
 
 <%}else{
-	Connection conn = null;
 	Statement stmt  = null;
-	String url = "jdbc:oracle:thin:@localhost:1521:orcl";  
-	String dbuser = "whoo";                                       
-	String dbpass = "1224"; 
 	int total = 0;
 	
 	try {
-		request.setCharacterEncoding("euc-kr");
-		Class.forName("oracle.jdbc.driver.OracleDriver");            
-		conn=DriverManager.getConnection(url,dbuser,dbpass);
-		
-		stmt = conn.createStatement();
+		request.setCharacterEncoding("UTF-8");
+		stmt = myConn.createStatement();
 
 		String sqlCount = "SELECT COUNT(*) FROM board";
 		ResultSet rs = stmt.executeQuery(sqlCount);

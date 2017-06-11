@@ -1,7 +1,7 @@
 <%@ page contentType="text/html; charset=UTF-8" %>
 <%@ page import="java.sql.*" %>
-
-<html><head><title> ¼ö°­½ÅÃ» ÀÔ·Â </title></head>
+<%@ include file="dbconfig.jsp" %>
+<html><head><title> </title></head>
 <body>
 
 <%	
@@ -10,17 +10,9 @@
 	String c_id_no =(request.getParameter("c_id_no"));
 %>
 <%		
-	Connection myConn = null;    String	result = null;	
-	String dburl  = "jdbc:oracle:thin:@localhost:1521:orcl";
-	String user="whoo";   String passwd="1224";
-	String dbdriver = "oracle.jdbc.driver.OracleDriver";    
-	try {
-		Class.forName(dbdriver);
-  	        myConn =  DriverManager.getConnection (dburl, user, passwd);
-    } catch(SQLException ex) {
-	     System.err.println("SQLException: " + ex.getMessage());
-    }
-     CallableStatement cstmt = myConn.prepareCall("{call InsertEnroll(?,?,?,?)}");	
+	String	result = null;	
+	
+    CallableStatement cstmt = myConn.prepareCall("{call InsertEnroll(?,?,?,?)}");	
 	cstmt.setString(1, s_id);
 	cstmt.setString(2, c_id);
 	cstmt.setString(3,c_id_no);

@@ -5,7 +5,8 @@
 	<title>내 강의 조회</title>
 </head>
 <body>
-<%@ include file="top.jsp"%>
+<%@ include file="top.jsp" %>
+<%@ include file="dbconfig.jsp" %>
 <%
 	if (session_id == null)
 		response.sendRedirect("login.jsp");
@@ -21,22 +22,10 @@
 		<th>수강신청</th>
 	</tr>
 	<%
-		Connection myConn = null;
 		Statement stmt = null;
 		ResultSet myResultSet = null;
 		String mySQL = "";
-		String dburl = "jdbc:oracle:thin:@localhost:1521:oracle";
-		String user = "db01";
-		String passwd = "ss2";
-		String dbdriver = "oracle.jdbc.driver.OracleDriver";
-		
-		try {
-			Class.forName(dbdriver);
-			myConn = DriverManager.getConnection(dburl, user, passwd);
 			stmt = myConn.createStatement();
-		} catch (SQLException ex) {
-			System.err.println("SQLException: " + ex.getMessage());
-		}
 		mySQL = "select c_id,c_id_no,c_name,c_unit from course where c_id in (select c_id from teach where p_id='"
 				+ session_id + "')";
 

@@ -1,6 +1,8 @@
 
 <%@ page contentType="text/html; charset=UTF-8"%>
 <%@ page import="java.sql.*"%>
+<%@ include file="top.jsp" %>
+<%@ include file="dbconfig.jsp" %>
 <html>
 <head>
 <title>수강신청 사용자 정보 수정</title>
@@ -9,7 +11,8 @@
 	<form method="post" action="update_verify.jsp">
 		<h2>정보 수정을 위해 정보를 입력해주세요.</h2>
 		<table>
-			<%@ include file="top.jsp"%>
+
+			
 			<%
 				if (session_id == null)
 					response.sendRedirect("login.jsp");

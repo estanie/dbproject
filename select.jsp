@@ -1,7 +1,9 @@
-<%@ page contentType="text/html;charset=utf-8" %>
+<%@ page contentType="text/html; charset=UTF-8" %>
 <%@ page import="java.util.*" %>
 <%@ page import="java.io.*" %>
 <%@ page import="java.sql.*" %>
+<%@ include file="top.jsp" %>
+<%@ include file="dbconfig.jsp" %>
 <%
    String pageNum = request.getParameter("pageNum");
    if (pageNum == null) {
@@ -18,23 +20,11 @@
    int num[] = {0};
    int row = startRow;
 %>
-
-<HTML>
-<HEAD>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<link rel="stylesheet" href="style.css">
-<link rel="stylesheet" href="layout.css" media="screen and (max-width:1080px)">
-<TITLE> 스케줄 관리 </TITLE>
-</HEAD>
-
-<body class="main">
-
 <%
-   String curuser = (String)session.getAttribute("user");
-      if (curuser == null) {%>
+      if (session_id == null) {%>
          <script language=javascript>
          self.window.alert("접근할 수 없습니다. 로그인 후 이용해주세요.");
-           location.href="main.jsp"; 
+           location.href="login.jsp"; 
          </script>
       <%}
       else {%>
@@ -64,18 +54,9 @@
                         <TD> 월 </TD>
                         <td>삭제</td>
                      </TR>
-                           <%
-                     Connection conn = null;      
-                     Statement stmt  = null;
-                     
-                     String url = "jdbc:oracle:thin:@localhost:1521:orcl"; 
-                     String dbuser = "whoo"; 
-                     String dbpass = "1224";
-                     try {
-                        Class.forName("oracle.jdbc.driver.OracleDriver");            
-                        conn=DriverManager.getConnection(url,dbuser,dbpass);
-                  
-                        stmt = conn.createStatement();
+                           <%      
+                     Statement stmt  = null;                  
+                     stmt = myConn.createStatement();
                   
                         String strSQL = "SELECT count(*) FROM schedule";
                         ResultSet rs = stmt.executeQuery(strSQL);

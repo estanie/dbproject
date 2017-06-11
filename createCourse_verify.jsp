@@ -1,6 +1,7 @@
 <%@ page contentType="text/html; charset=UTF-8"%>
 <%@ page import="java.sql.*"%>
 <%@ include file="top.jsp"%>
+<%@ include file="dbconfig.jsp" %>
 <%
 	String c_id = request.getParameter("courseId");
 	String c_name = request.getParameter("courseName");
@@ -8,16 +9,9 @@
 	int c_unit = Integer.parseInt(request.getParameter("courseUnit"));
 	int t_time = Integer.parseInt(request.getParameter("courseTime"));
 	int t_max = Integer.parseInt(request.getParameter("courseMax"));
-	Connection myConn = null;
 	CallableStatement stmt = null;
 	String mySQL = null;
 	String mySQL2 = null;
-	String dburl = "jdbc:oracle:thin:@localhost:1521:oracle";
-	String user = "db01";
-	String passwd = "ss2";
-	String jdbc_driver = "oracle.jdbc.driver.OracleDriver";
-	Class.forName(jdbc_driver);
-	myConn = DriverManager.getConnection(dburl, user, passwd);
 	stmt = myConn.prepareCall("insert into course values(?,?,?,?)");
 	stmt.setString(1, c_id);
 	stmt.setInt(2, 1);
