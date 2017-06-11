@@ -5,7 +5,6 @@
 
 	int userID = Integer.parseInt(request.getParameter("userid"));
 	String userPassword = request.getParameter("userpw");
-	Connection myConn = null;
 	Statement stmt = null;
 	String mySQL = null;
 	String mySQL2 = null;
