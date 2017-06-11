@@ -1,8 +1,8 @@
-<%@ page contentType="text/html; charset=EUC-KR"%>
+<%@ page contentType="text/html; charset=UTF-8"%>
 <%@ page import="java.sql.*"%>
 <html>
 <head>
-	<title>╪Ж╟╜╫ец╩ ют╥б</title>
+	<title>Л┬≤Й╟∙Л▀═Л╡╜ Л·┘К═╔</title>
 </head>
 <body>
 <%@ include file="top.jsp"%>
@@ -14,22 +14,21 @@
 <table width="75%" align="center" border>
 	<br>
 	<tr>
-		<th>╟З╦Я╧Ьхё</th>
-		<th>╨п╧щ</th>
-		<th>╟З╦Я╦М</th>
-		<th>гпа║</th>
-		<th>╪Ж╟╜╫ец╩</th>
+		<th>ЙЁ╪К╙╘К╡┬М≤╦</th>
+		<th>К╤└К╟≤</th>
+		<th>ЙЁ╪К╙╘К╙┘</th>
+		<th>М∙≥Л═░</th>
+		<th>Л┬≤Й╟∙Л▀═Л╡╜</th>
 	</tr>
 	<%
 		Connection myConn = null;
 		Statement stmt = null;
 		ResultSet myResultSet = null;
 		String mySQL = "";
-		String dburl = "jdbc:oracle:thin:@db.sd.ac.kr:1521:ora9";
-		String user = "db";
-		String passwd = "db";
+		String dburl = "jdbc:oracle:thin:@localhost:1521:orcl";
+		String user = "whoo";
+		String passwd = "1224";
 		String dbdriver = "oracle.jdbc.driver.OracleDriver";
-
 		try {
 			Class.forName(dbdriver);
 			myConn = DriverManager.getConnection(dburl, user, passwd);
@@ -39,13 +38,13 @@
 		}
 		mySQL = "select c_id,c_id_no,c_name,c_unit from course where c_id not in (select c_id from enroll where s_id='"
 				+ session_id + "')";
-
 		myResultSet = stmt.executeQuery(mySQL);
-
 		if (myResultSet != null) {
+			out.println("*");
 			while (myResultSet.next()) {
+				out.println("$");
 				String c_id = myResultSet.getString("c_id");
-				int c_id_no = myResultSet.getInt("c_id_no");
+				String c_id_no = myResultSet.getString("c_id_no");
 				String c_name = myResultSet.getString("c_name");
 				int c_unit = myResultSet.getInt("c_unit");
 	%>
@@ -55,7 +54,7 @@
 		<td align="center"><%=c_name%></td>
 		<td align="center"><%=c_unit%></td>
 		<td align="center"><a
-				href="insert_verify.jsp?c_id=<%=c_id%>&c_id_no=<%=c_id_no%>">╫ец╩</a></td>
+				href="insert_verify.jsp?c_id=<%=c_id%>&c_id_no=<%=c_id_no%>">Л▀═Л╡╜</a></td>
 	</tr>
 	<%
 			}
