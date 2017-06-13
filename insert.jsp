@@ -22,17 +22,26 @@
 		<th>수강신청</th>
 	</tr>
 	<%
+		CallableStatement cstmt = null;
+		CallableStatement cstmt2 = null;
+		cstmt = myConn.prepareCall("{? = call Date2EnrollSemester(SYSDATE)}");
+		cstmt.registerOutParameter(1,java.sql.Types.INTEGER);
+		cstmt.execute();
+		int semester = cstmt.getInt(1);
+		cstmt2 = myConn.prepareCall("{? = call Date2EnrollYear(SYSDATE)}");
+		cstmt2.registerOutParameter(1,java.sql.Types.INTEGER);
+		cstmt2.execute();
+		int year = cstmt.getInt(1);
 		Statement stmt = null;
 		ResultSet myResultSet = null;
 		String mySQL = "";
 		stmt = myConn.createStatement();
 		mySQL = "select c_id,c_id_no,c_name,c_unit from course where c_id not in (select c_id from enroll where s_id='"
-				+ session_id + "')";
+				+ session_id + "') and c_id in (select c_id from enroll where e_year ="+year+" and e_semester = "+semester+")";
+		
 		myResultSet = stmt.executeQuery(mySQL);
 		if (myResultSet != null) {
-			out.println("*");
 			while (myResultSet.next()) {
-				out.println("$");
 				String c_id = myResultSet.getString("c_id");
 				String c_id_no = myResultSet.getString("c_id_no");
 				String c_name = myResultSet.getString("c_name");
@@ -49,6 +58,8 @@
 	<%
 			}
 		}
+		cstmt.close();
+		cstmt2.close();
 		stmt.close();
 		myConn.close();
 	%>

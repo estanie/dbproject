@@ -1,26 +1,28 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<html>
+<%@ page contentType="text/html; charset=UTF-8"%>
+<%@ page import="java.sql.*"%>
+<%@ include file="top.jsp"%>
+<%@ include file="dbconfig.jsp" %>
+<%
+	String c_id = request.getParameter("c_id");
+	int c_id_no = Integer.parseInt(request.getParameter("c_id_no"));
+	Statement stmt = null;
+	String mySQL = null;
+	stmt = myConn.createStatement();
+	mySQL = "delete from enroll where c_id='" + c_id + "' and c_id_no ='"+c_id_no+"' and s_id=" + session_id + "";
+	int re = stmt.executeUpdate(mySQL);
 
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>스케줄 삭제 처리</title>
-<%String delnum = request.getParameter("day");%>
-<script language="JavaScript">
-function myconfirm(){ 
-	if (confirm("정말 삭제 하시겠습니까?")){ 
-		location.href="delete_ok.jsp?day=<%=delnum%>";
-	}
-	else{ 
-	  	location.href="select.jsp"; 
-	} 
-} 
-</script>
-</head>
+	if (re!=0) { %>
+		<script>
+		  alert("삭제되었습니다..");
+		  location.href="select.jsp";
+		</script>
+<% 	} else { %>
+	<script>
+		  alert("오류..");
+		  location.href="select.jsp";
+		</script>
+<% }
 
-<body>
-
-<script language="JavaScript">
-myconfirm();
-</script>
-</body>
-</html>
+	stmt.close();
+	myConn.close();
+%>
