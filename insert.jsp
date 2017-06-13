@@ -2,14 +2,21 @@
 <%@ page import="java.sql.*"%>
 <html>
 <head>
-	<title>수강신청 입력</title>
+	<title>수강신청</title>
 </head>
 <body>
 <%@ include file="top.jsp"%>
 <%@ include file="dbconfig.jsp" %>
 <%
-	if (session_id == null)
-		response.sendRedirect("login.jsp");
+	if (session_id == null){
+		%>
+		<script>
+			alert("로그인이 필요합니다.");
+			location.href = "login.jsp";
+		</script>
+		<%
+		}
+	else{
 %>
 	<%
 		CallableStatement cstmt = null;
@@ -67,6 +74,7 @@
 		cstmt2.close();
 		stmt.close();
 		myConn.close();
+		}
 	%>
 </table>
 </body>

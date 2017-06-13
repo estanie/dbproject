@@ -9,7 +9,13 @@
 <%@ include file="dbconfig.jsp" %>
 <%
 	if (session_id == null)
-		response.sendRedirect("login.jsp");
+	{
+		%>	<script>
+			alert("로그인이 필요합니다.");
+			location.href = "login.jsp";
+		</script>
+	<% 
+	}
 %>
 <table width="75%" align="center" border>
 	<br/>

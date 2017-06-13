@@ -14,8 +14,13 @@
 
 			
 			<%
-				if (session_id == null)
-					response.sendRedirect("login.jsp");
+				if (session_id == null){
+					%>	<script>
+			alert("로그인이 필요합니다.");
+			location.href = "login.jsp";
+		</script>
+	<%
+				}
 
 				Statement stmt = null;
 				ResultSet rs = null;
