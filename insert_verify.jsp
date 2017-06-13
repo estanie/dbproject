@@ -5,7 +5,7 @@
 <body>
 
 <%	
-	String s_id = (String)session.getAttribute("user");
+	int s_id = (Integer)session.getAttribute("id");
 	String c_id = request.getParameter("c_id");
 	String c_id_no =(request.getParameter("c_id_no"));
 %>
@@ -13,7 +13,7 @@
 	String	result = null;	
 	
     CallableStatement cstmt = myConn.prepareCall("{call InsertEnroll(?,?,?,?)}");	
-	cstmt.setString(1, s_id);
+	cstmt.setInt(1, s_id);
 	cstmt.setString(2, c_id);
 	cstmt.setString(3,c_id_no);
 	cstmt.registerOutParameter(4, java.sql.Types.VARCHAR);	
