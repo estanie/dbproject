@@ -8,9 +8,6 @@
 		String pwd = "ss2";
 		String jdbc_driver = "oracle.jdbc.driver.OracleDriver";
 
-		String user_address = request.getParameter("userAddress");
-		String user_pwd = request.getParameter("userPassword");
-
 		Class.forName(jdbc_driver);
 		myConn = DriverManager.getConnection(dburl, user, pwd);
 %>

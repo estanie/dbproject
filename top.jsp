@@ -43,12 +43,12 @@
 				<div class="header_top"></div>
 				<nav id="gnb">
 					<ul class="depth1menu">
-						<li class="gnb01 "><a href="mypage.jsp">MYPAGE</a></li>
-						<li class="gnb02 "><a href="insert.jsp">ENROLLMENT</a></li>
-						<li class="gnb03 "><a href="select.jsp">LIST</a></li>
-						<li class="gnb04 "><a href="timetable.jsp">TIMETABLE</a></li>
-						<li class="gnb05 "><a href="list.jsp">ASSESSMENT</a></li>
-						<li class="gnb06 "><a href="map.jsp">DIRECTIONS</a></li>
+						<li class="gnb01 "><a href="mypage.jsp">내 정보 수정</a></li>
+						<li class="gnb02 "><a href="insert.jsp">수강신청</a></li>
+						<li class="gnb03 "><a href="select.jsp">내 수강 정보 조회</a></li>
+						<li class="gnb04 "><a href="timetable.jsp">나의 시간표</a></li>
+						<li class="gnb05 "><a href="list.jsp">강의평 조회</a></li>
+						<li class="gnb06 "><a href="map.jsp">지도</a></li>
 					</ul>
 				</nav>
 			</header>

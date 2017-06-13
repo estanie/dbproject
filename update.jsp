@@ -17,20 +17,10 @@
 				if (session_id == null)
 					response.sendRedirect("login.jsp");
 
-				Connection myConn = null;
 				Statement stmt = null;
 				ResultSet rs = null;
 				ResultSet prs = null;
-
-				String dburl = "jdbc:oracle:thin:@localhost:1521:oracle";
-				String user = "db01";
-				String passwd = "ss2";
-
-				String jdbc_driver = "oracle.jdbc.driver.OracleDriver";
-				Class.forName(jdbc_driver);
-				myConn = DriverManager.getConnection(dburl, user, passwd);
-
-				String mySQL = "select s_pwd from students where s_id='" + session_id + "'";
+				String mySQL = "select s_pwd from students where s_id=" + session_id + "";
 
 				stmt = myConn.createStatement();
 				rs = stmt.executeQuery(mySQL);
@@ -52,13 +42,12 @@
 						title=“비밀번호"/></td>
 				</tr>
 				<tr>
-					<td colspan="4" align="center"><input type="submit"
-						value="수정 완료”></td></tr>
-		</tbody>
-		
+					<td colspan="4" align="center"><input type="submit" value="수정완료" /></td>
+				</tr>
+				</tbody>
 <% }
  else {
-	String mySQL2 = "select p_id from professor where p_id='" + userID + "'";
+	String mySQL2 = "select p_id from professor where p_id=" + session_id + "";
 	 prs = stmt.executeQuery(mySQL2);
 	if (prs.next()) {
 	 %>
@@ -72,13 +61,14 @@
 					<td><input type="password" id="userpw" name="userpw" title=“비밀번호 "/></td>
 				</tr>
 				<tr>
-					<td colspan="4" align="center"><input type="submit" value="수정 완료” /
-					></td></tr>
-	 <%}
-			}
-			}
-			stmt.close();
-			myConn.close();%>
+					<td colspan="4" align="center"><input type="submit" value="수정완료" ></td>
+				</tr>
+				<%
+				}
+		}
+					stmt.close();
+					myConn.close();
+		}%>
  </table>
 		</form>
 </body></html>
