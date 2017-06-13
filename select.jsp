@@ -25,8 +25,7 @@
 		ResultSet myResultSet = null;
 		String mySQL = "";
 			stmt = myConn.createStatement();
-		mySQL = "select c_id,c_id_no,c_name,c_unit from course where c_id in (select c_id from enroll where s_id='"
-				+ session_id + "') and c_id_no in (select c_id_no from enroll where s_id = '"+session_id+"')";
+		mySQL = "select c.c_id, c.c_id_no, c.c_name, c.c_unit from course c, enroll e where c.c_id = e.c_id and c.c_id_no = e.c_id_no and s_id="+session_id;
 
 		myResultSet = stmt.executeQuery(mySQL);
 
