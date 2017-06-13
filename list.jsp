@@ -1,23 +1,26 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+
+<%@ page contentType="text/html; charset=UTF-8"%>
+<%@ page import="java.sql.*"%>
 <%@ page import="java.util.Date" %>
-<%@ page import="java.io.*" %>
-<%@ page import="java.sql.*" %>
-<%@ include file="top.jsp" %>
-<%@ include file="dbconfig.jsp" %>
-<!doctype html>
 <html>
 <head>
+	<title>게시판</title>
 </head>
 <body>
-<%if (session.getAttribute("user") == null) {%>
+<%@ include file="top.jsp"%>
+<%@ include file="dbconfig.jsp" %>
 
-<%}else{
-	Statement stmt  = null;
-	int total = 0;
-	
-	try {
-		request.setCharacterEncoding("UTF-8");
+<div id="containerwrap">
+			<div id="container">
+				<div class="section_title">
+					<h1><span>강의평 게시판</span></h1>
+				</div>
+				<div id="content" class="myPoint">
+<center>
+<div class="pointBox">
+<%
+		Statement stmt  = null;
+		int total = 0;
 		stmt = myConn.createStatement();
 
 		String sqlCount = "SELECT COUNT(*) FROM board";
@@ -38,7 +41,7 @@
 		<input type="submit" value="검색"/>
 		</form><br/><br/>
 		<%
-		String sqlList = "SELECT NUM, USERNAME, TITLE, TIME, HIT, INDENT from board order by REF DESC, STEP ASC";
+		String sqlList = "SELECT NUM, USERNAME, TITLE, HIT from board";
 		
 		rs = stmt.executeQuery(sqlList);
 		
@@ -50,7 +53,6 @@
    <td width="73">번호</td>
    <td width="379">제목</td>
    <td width="73">작성자</td>
-   <td width="164">작성일</td>
    <td width="58">조회수</td>
    <td width="7"><img src="table_right.gif" width="5" height="30" /></td>
   </tr>
@@ -67,43 +69,25 @@
 			int idx = rs.getInt(1);
 			String name = rs.getString(2);
 			String title = rs.getString(3);
-			String time = rs.getString(4);
-			int hit = rs.getInt(5);
-			int indent = rs.getInt(6);
-		
+			int hit = rs.getInt(4);
 %>
 <tr height="25" align="center">
 <td>&nbsp;</td>
 	<td><%=idx %></td>
 	<td align="left">
-	<% 
-		
-	for(int j=0;j<indent;j++){
-%>		&nbsp;&nbsp;&nbsp;<%
-	}
-	if(indent!=0){
-%>		<img src='reply_icon.gif' />
-<%
-	}
-%> 
+
 <a href="view.jsp?idx=<%=idx%>"><%=title %></td>
 	<td align="center"><%=name %></td>
-	<td align="center"><%=time %></td>
 	<td align="center"><%=hit %></td>
 	<td>&nbsp;</td>
 </tr>
   <tr height="1" bgcolor="#D2D2D2"><td colspan="6"></td></tr>
-
-<% 		}// while
-	} // else
+<% 
+		}
+	} 
 	rs.close();
 	stmt.close();
-	conn.close();
-
-}catch(SQLException e) {
-	out.println( e.toString() );
-}
-}
+	myConn.close();
 %>
  <tr height="1" bgcolor="#82B5DF"><td colspan="6" width="752"></td></tr>
  </table>
@@ -114,6 +98,10 @@
    <td><input type=button value="글쓰기" OnClick="window.location='write.jsp'"></td>
   </tr>
 </table>
-
-</body>
-</html>
+					</div>
+					</center>
+					</div>
+					</div>
+<%@ include file="footer2.jsp" %>
+</div>
+<%@ include file="footer.jsp"%>
