@@ -1,16 +1,30 @@
-<%@ page contentType="text/html; charset=EUC-KR" %>
+<%@ page contentType="text/html; charset=UTF-8" %>
 <%@ page import="java.sql.*" %>
+<%@ include file="top.jsp" %>
+<%@ include file="dbconfig.jsp" %>
 <html>
-<head><title> ╪Ж╟╜╫ец╩ ╩Г©Кюз а╓╨╦ ╪Жа╓ </title></head>
+<head><title> Л┬≤Й╟∙Л▀═Л╡╜ Л┌╛Л ╘Л·░ Л═∙КЁ╢ Л┬≤Л═∙ </title></head>
 <body>
 
-<%    
+<%  
+	String sMessage = "КЁ─Й╡╫Л²╢ Л≥└Кё▄К░≤Л≈┬Л┼╣К▀┬К▀╓.";
+	try{
+		String s_pwd = (String)request.getParameter("userpw");
+		Statement stmt = null;
+		ResultSet rs = null;
+		String mySQL = "update students set s_pwd = '"+s_pwd +"' where s_id = "+session_id;
+
+		stmt = myConn.createStatement();
+		rs = stmt.executeQuery(mySQL);
+
+		
      } catch(SQLException ex) {
-  	   String sMessage;
-   	   if (ex.getErrorCode() == 20002) sMessage="╬охё╢б 4юз╦╝ юл╩Сюл╬Н╬ъ гу╢о╢ы";
-	  else if (ex.getErrorCode() == 20003) sMessage="╬охё©║ ╟Ь╤Ую╨ ют╥б╣гаЖ ╬й╫ю╢о╢ы.";
-	  else sMessage="юА╫ц хд ╢ы╫ц ╫ц╣╣го╫й╫ц©ю";	
+  	   
+   	   if (ex.getErrorCode() == 20002) sMessage="Л∙■М≤╦К┼■ 4Л·░К╕╛ Л²╢Л┐│Л²╢Л√╢Л∙╪ М∙╘К▀┬К▀╓";
+	  else if (ex.getErrorCode() == 20003) sMessage="Л∙■М≤╦Л≈░ ЙЁ╣К·─Л²─ Л·┘К═╔К░≤Л╖─ Л∙┼Л┼╣К▀┬К▀╓.";
+	  else sMessage="Л·═Л▀° М⌡└ К▀╓Л▀° Л▀°К▐└М∙≤Л▀╜Л▀°Л≤╓";	
      }
 %>
-
-</body></html>
+М∙≤М∙≤М∙≤М∙≤ <%= sMessage %>
+</body>
+</html>
