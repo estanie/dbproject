@@ -26,7 +26,7 @@
 		String mySQL = "";
 			stmt = myConn.createStatement();
 		mySQL = "select c_id,c_id_no,c_name,c_unit from course where c_id in (select c_id from enroll where s_id='"
-				+ session_id + "')";
+				+ session_id + "') and c_id_no in (select c_id_no from enroll where s_id = '"+session_id+"')";
 
 		myResultSet = stmt.executeQuery(mySQL);
 
