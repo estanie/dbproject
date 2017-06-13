@@ -88,8 +88,7 @@
                 <% 
  	sql = "UPDATE board SET HIT=" + hit + " where NUM=" +idx;
  	stmt.executeUpdate(sql);
- 	rs.close();
- 	stmt.close();
+
  //	myConn.close();
 	 	}
 %>
@@ -108,14 +107,9 @@
   </tr>
   
   <%
-		myConn = null;
-		stmt  = null;
-		rs = null;
 		int total = 0;
-	
-		stmt = myConn.createStatement();
 		
-		String sqlList = "SELECT ID, CONTENT from commenttable where REF="+idx;
+		String sqlList = "SELECT ID, CONTENT from comenttable where REF="+idx;
 		rs = stmt.executeQuery(sqlList);
 		
 %>
@@ -125,6 +119,7 @@
    <td align="center" width="379">내용</td>
    </tr>
   <%	 		
+  	if (rs!=null){
 		while(rs.next()) {
 			String name = rs.getString(1);
 			String title = rs.getString(2);
@@ -136,6 +131,7 @@
   </tr> 
   <% 
 		}
+  	}
 	rs.close();
 	stmt.close();
 	//myConn.close();

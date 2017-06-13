@@ -26,7 +26,7 @@ request.setCharacterEncoding("utf-8"); // 한글 처리 구문
 				max=rs.getInt(1);
 			}
 			
-			sql = "INSERT INTO board(USERNAME,PASSWORD,TITLE,MEMO) VALUES(?,?,?,?)";
+			sql = "INSERT INTO board(NUM, USERNAME,PASSWORD,TITLE,MEMO) VALUES(num.NEXTVAL, ?,?,?,?)";
 			PreparedStatement pstmt = myConn.prepareStatement(sql);
 			
 			pstmt.setString(1, name);
