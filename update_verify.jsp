@@ -13,10 +13,8 @@
 		Statement stmt = null;
 		ResultSet rs = null;
 		String mySQL = "update students set s_pwd = '"+s_pwd +"' where s_id = "+session_id;
-
 		stmt = myConn.createStatement();
 		rs = stmt.executeQuery(mySQL);
-
 		
      } catch(SQLException ex) {
   	   
@@ -25,6 +23,9 @@
 	  else sMessage="잠시 후 다시 시도하십시오";	
      }
 %>
-하하하하 <%= sMessage %>
+<script>
+	alert("<%=sMessage%>");
+	location.href="update.jsp"
+</script>
 </body>
 </html>
