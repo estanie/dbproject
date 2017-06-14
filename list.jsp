@@ -53,7 +53,6 @@
    <td width="73">번호</td>
    <td width="379">제목</td>
    <td width="73">작성자</td>
-   <td width="164">작성일</td>
    <td width="58">조회수</td>
    <td width="7"><img src="table_right.gif" width="5" height="30" /></td>
   </tr>
