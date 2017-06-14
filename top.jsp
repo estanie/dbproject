@@ -1,7 +1,7 @@
 <%@ page contentType="text/html; charset=UTF-8"%>
-<%@ page import="java.sql.*" %>
+<%@ page import="java.sql.*"%>
 <%
-//	String session_name = (String) session.getAttribute("user");
+	//	String session_name = (String) session.getAttribute("user");
 	Integer session_id = (Integer) session.getAttribute("id");
 	String session_identity = (String) session.getAttribute("identity");
 	String log;
@@ -25,10 +25,9 @@
 <link rel="stylesheet" href="layout.css"
 	media="screen and (max-width:1080px)">
 <style>
-#headwrap{
+#headwrap {
 	background-color: navy;
 }
-
 </style>
 
 </head>
@@ -38,32 +37,56 @@
 		<div id="headwrap">
 			<header id="header">
 				<h1>
-					<a href="main.jsp" title="홈 바로가기"><img src="bblogo.png" alt="로고"/></a>
+					<a href="main.jsp" title="홈 바로가기"><img src="bblogo.png"
+						alt="로고" /></a>
 				</h1>
 				<div class="util">
-					<ul class="menu"><%
-						if(session_id==null){%>
-							<li><a href="login.jsp" style="color:white;">로그인</a></li>
-						<%}
-						else{%>
-							<li><a href="logout.jsp" style="color:white;">로그아웃</a></li>
-						<%}
+					<ul class="menu">
+						<%
+							if (session_id == null) {
+						%>
+						<li><a href="login.jsp" style="color: white;">로그인</a></li>
+						<%
+							} else {
+						%>
+						<li><a href="logout.jsp" style="color: white;">로그아웃</a></li>
+						<%
+							}
 						%>
 					</ul>
 				</div>
 				<div class="header_top"></div>
 				<nav id="gnb">
 					<ul class="depth1menu">
-						<li class="gnb01 "><a href="update.jsp" style="color:white;">내 정보 수정</a></li>
-						<li class="gnb02 "><a href="insert.jsp" style="color:white;">수강신청</a></li>
-						<li class="gnb03 "><a href="select.jsp" style="color:white;">내 수강 정보 조회</a></li>
-						<li class="gnb04 "><a href="timetable.jsp" style="color:white;">나의 시간표</a></li>
-						<li class="gnb05 "><a href="list.jsp" style="color:white;">강의평 조회</a></li>
-						<li class="gnb06 "><a href="map.jsp" style="color:white;">지도</a></li>
+						<%
+							if (session_identity == "professor") {
+						%>
+						<li class="gnb01 "><a href="update.jsp" style="color: white;">내정보 수정</a></li>
+						<li class="gnb02 "><a href="create_course.jsp" style="color: white;">수업 생성</a></li>
+						<li class="gnb03 "><a href="select_course.jsp" style="color: white;">내	수업 조회</a></li>
+						<li class="gnb04 "><a href="timetable.jsp" style="color: white;">강의 시간표</a></li>
+						<li class="gnb05 "><a href="list.jsp" style="color: white;">강의평 조회</a></li>
+						<li class="gnb06 "><a href="map.jsp" style="color: white;">오시는길</a></li>
+
+						<%
+							} else {
+						%>
+
+						<li class="gnb01 "><a href="update.jsp" style="color: white;">내
+								정보 수정</a></li>
+						<li class="gnb02 "><a href="insert.jsp" style="color: white;">수강신청</a></li>
+						<li class="gnb03 "><a href="select.jsp" style="color: white;">내
+								수강 정보 조회</a></li>
+						<li class="gnb04 "><a href="timetable.jsp"
+							style="color: white;">나의 시간표</a></li>
+						<li class="gnb05 "><a href="list.jsp" style="color: white;">강의평
+								조회</a></li>
+						<li class="gnb06 "><a href="map.jsp" style="color: white;">지도</a></li>
+						<%} %>
 					</ul>
 				</nav>
 			</header>
 		</div>
-</div>
+	</div>
 </body>
 </html>
