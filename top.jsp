@@ -12,7 +12,6 @@
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 <link rel="shortcut icon" type="image/x-icon" href="bbicon.png" />
-<title>수강신청 로그인</title>
 <meta name="viewport"
 	content="initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, width=device-width, user-scalable=no" />
 <meta name="format-detection"
@@ -25,6 +24,13 @@
 <link rel="stylesheet" href="style.css">
 <link rel="stylesheet" href="layout.css"
 	media="screen and (max-width:1080px)">
+<style>
+#headwrap{
+	background-color: navy;
+}
+
+</style>
+
 </head>
 
 <body class="member">
@@ -32,16 +38,15 @@
 		<div id="headwrap">
 			<header id="header">
 				<h1>
-					<a href="main.jsp" title="홈 바로가기"><img src="bblogo.png"
-						alt="로고" /></a>
+					<a href="main.jsp" title="홈 바로가기"><img src="bblogo.png" alt="로고"/></a>
 				</h1>
 				<div class="util">
 					<ul class="menu"><%
 						if(session_id==null){%>
-							<li><a href="login.jsp">로그인</a></li>
+							<li><a href="login.jsp" style="color:white;">로그인</a></li>
 						<%}
 						else{%>
-							<li><a href="logout.jsp">로그아웃</a></li>
+							<li><a href="logout.jsp" style="color:white;">로그아웃</a></li>
 						<%}
 						%>
 					</ul>
@@ -49,13 +54,16 @@
 				<div class="header_top"></div>
 				<nav id="gnb">
 					<ul class="depth1menu">
-						<li class="gnb01 "><a href="update.jsp">내 정보 수정</a></li>
-						<li class="gnb02 "><a href="insert.jsp">수강신청</a></li>
-						<li class="gnb03 "><a href="select.jsp">내 수강 정보 조회</a></li>
-						<li class="gnb04 "><a href="timetable.jsp">나의 시간표</a></li>
-						<li class="gnb05 "><a href="list.jsp">강의평 조회</a></li>
-						<li class="gnb06 "><a href="map.jsp">지도</a></li>
+						<li class="gnb01 "><a href="update.jsp" style="color:white;">내 정보 수정</a></li>
+						<li class="gnb02 "><a href="insert.jsp" style="color:white;">수강신청</a></li>
+						<li class="gnb03 "><a href="select.jsp" style="color:white;">내 수강 정보 조회</a></li>
+						<li class="gnb04 "><a href="timetable.jsp" style="color:white;">나의 시간표</a></li>
+						<li class="gnb05 "><a href="list.jsp" style="color:white;">강의평 조회</a></li>
+						<li class="gnb06 "><a href="map.jsp" style="color:white;">지도</a></li>
 					</ul>
 				</nav>
 			</header>
 		</div>
+</div>
+</body>
+</html>

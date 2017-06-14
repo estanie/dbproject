@@ -1,5 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ page import="java.util.Date"%>
 <%@ page import="java.io.*"%>
 <%@ page import="java.sql.*"%>
@@ -56,6 +55,7 @@
 
 		</div>
 	</div>
-				<%@ include file="footer2.jsp" %>
 </div>
+
+<%@ include file="footer2.jsp"%>
 <%@ include file="footer.jsp"%>
