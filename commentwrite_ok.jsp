@@ -13,7 +13,6 @@
 	String cc = request.getParameter("content"); //write.jsp에서 memo에 입력한 데이터값
 	String iidx = request.getParameter("boardNo");
 	int iiidx = Integer.parseInt(iidx);
-	Date time = new Date();
 	   int max = 0;
 
 			stmt = myConn.createStatement();
