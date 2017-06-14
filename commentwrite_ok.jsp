@@ -17,7 +17,7 @@
 
 			stmt = myConn.createStatement();
 			
-			String sql = "INSERT INTO commenttable(ID, CONTENT, REF) VALUES(?,?,?)";
+			String sql = "INSERT INTO comenttable(ID, CONTENT, REF) VALUES(?,?,?)";
 			PreparedStatement pstmt = myConn.prepareStatement(sql);
 			
 			pstmt.setString(1, ww);

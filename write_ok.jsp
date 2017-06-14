@@ -19,14 +19,14 @@ request.setCharacterEncoding("utf-8"); // 한글 처리 구문
 
 			stmt = myConn.createStatement();
 			
-			String sql = "SELECT MAX(NUM) FROM board";
+			String sql = "SELECT MAX(b_no) FROM board";
 			ResultSet rs = stmt.executeQuery(sql);
 			
 			if(rs.next()){
 				max=rs.getInt(1);
 			}
 			
-			sql = "INSERT INTO board(NUM, USERNAME,PASSWORD,TITLE,MEMO) VALUES(num.NEXTVAL, ?,?,?,?)";
+			sql = "INSERT INTO board(b_no, b_name,b_pwd,b_title,b_content) VALUES(b_no.NEXTVAL, ?,?,?,?)";
 			PreparedStatement pstmt = myConn.prepareStatement(sql);
 			
 			pstmt.setString(1, name);

@@ -41,7 +41,7 @@
 		<input type="submit" value="검색"/>
 		</form><br/><br/>
 		<%
-		String sqlList = "SELECT NUM, USERNAME, TITLE, HIT from board";
+		String sqlList = "SELECT b_no, b_name, b_title, b_hit from board";
 		
 		rs = stmt.executeQuery(sqlList);
 		

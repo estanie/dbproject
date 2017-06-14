@@ -23,7 +23,7 @@
 		Statement stmt  = null;
 		stmt = myConn.createStatement();
 		int idx = Integer.parseInt(request.getParameter("idx"));
-		String sql = "SELECT USERNAME, TITLE, MEMO, HIT FROM board WHERE NUM=" + idx;
+		String sql = "SELECT b_name, b_title, b_content, b_hit FROM board WHERE b_no=" + idx;
 		ResultSet rs = stmt.executeQuery(sql);
 		 if(rs.next()){
 				String name = rs.getString(1);
@@ -86,7 +86,7 @@
                    <td width="399" colspan="2" height="200"><%=memo %>
                 </tr>
                 <% 
- 	sql = "UPDATE board SET HIT=" + hit + " where NUM=" +idx;
+ 	sql = "UPDATE board SET b_hit=" + hit + " where b_no=" +idx;
  	stmt.executeUpdate(sql);
 
  //	myConn.close();
