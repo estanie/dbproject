@@ -41,7 +41,7 @@
 		<input type="submit" value="검색"/>
 		</form><br/><br/>
 		<%
-		String sqlList = "SELECT NUM, USERNAME, TITLE, HIT from board order by STEP ASC";
+		String sqlList = "SELECT NUM, USERNAME, TITLE, HIT from board";
 		
 		rs = stmt.executeQuery(sqlList);
 		
