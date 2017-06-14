@@ -1,6 +1,7 @@
   CREATE TABLE STUDENTS (
     s_id NUMBER(10) CONSTRAINT s_pk PRIMARY KEY,
     s_pwd VARCHAR(20),
+    s_name VARCHAR(10),
     s_major VARCHAR(20),
     s_addr VARCHAR(30),
     s_email VARCHAR(50)
@@ -9,6 +10,7 @@
  CREATE TABLE PROFESSOR (
     p_id NUMBER(10) CONSTRAINT p_pk PRIMARY KEY,
     p_pwd VARCHAR(20),
+    p_name VARCHAR(10),
     p_major VARCHAR(20),
     p_email VARCHAR(50)
  );
