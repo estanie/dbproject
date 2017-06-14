@@ -36,8 +36,14 @@
 						alt="로고" /></a>
 				</h1>
 				<div class="util">
-					<ul class="menu">
-						<li><a href="login.jsp">로그인</a></li>
+					<ul class="menu"><%
+						if(session_id==null){%>
+							<li><a href="login.jsp">로그인</a></li>
+						<%}
+						else{%>
+							<li><a href="logout.jsp">로그아웃</a></li>
+						<%}
+						%>
 					</ul>
 				</div>
 				<div class="header_top"></div>
