@@ -44,10 +44,29 @@ CREATE TABLE teach (
     c_id_no NUMBER(2),
     e_year NUMBER(4),
     e_semester NUMBER(1),
-    CONSTRAINT e_s_id_pk FOREIGN KEY (s_id) REFERENCES STUDENTS(s_id),
-    CONSTRAINT e_c_id_pk FOREIGN KEY (c_id,c_id_no) REFERENCES COURSE(c_id,c_id_no),
+    CONSTRAINT e_s_id_fk FOREIGN KEY (s_id) REFERENCES STUDENTS(s_id),
+    CONSTRAINT e_c_id_fk FOREIGN KEY (c_id,c_id_no) REFERENCES COURSE(c_id,c_id_no),
     CONSTRAINT e_pk PRIMARY KEY(e_year, e_semester, s_id, c_id)
  );
+CREATE SEQUENCE num
+START WITH 1
+INCREMENT BY 1;
+
+CREATE TABLE BOARD(
+num NUMBER(10) CONSTRAINT b_pk PRIMARY KEY,
+username VARCHAR(20),
+password VARCHAR(20),
+title VARCHAR(20) NOT NULL,
+memo VARCHAR(500),
+hit NUMBER(10)
+);
+
+CREATE TABLE COMENTTABLE(
+id VARCHAR(20),
+content VARCHAR(100),
+ref NUMBER(10),
+CONSTRAINT com_ref_fk FOREIGN KEY (ref) REFERENCES BOARD(num)
+);
 
 INSERT INTO STUDENTS VALUES(1410845,'안지후');
 INSERT INTO STUDENTS VALUES(1411893,'이다영');
