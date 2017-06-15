@@ -39,16 +39,21 @@
 		cstmt2.registerOutParameter(1,java.sql.Types.INTEGER);
 		cstmt2.execute();
 		int year = cstmt2.getInt(1);
-		Statement stmt = null;
+		CallableStatement stmt = null;
 		ResultSet myResultSet = null;
-		String mySQL = "";
-			stmt = myConn.createStatement();
-		mySQL = "select c.c_id, c.c_id_no, c.c_name, c.c_unit, t_where, t.t_time, t.t_day from teach t, course c, enroll e "+
-				" where t.t_year= "+year+" and t.t_semester = "+semester+" and t.c_id = c.c_id and c.c_id = e.c_id and t.c_id_no = c.c_id_no and c.c_id_no = e.c_id_no and s_id="+session_id;
-
-		myResultSet = stmt.executeQuery(mySQL);
-
-		if (myResultSet != null) {
+		String mySQL = "{call SelectTimeTable(?,?,?,?,?,?)}";
+			stmt = myConn.prepareCall(mySQL);
+			stmt.setInt(1,session_id);
+			stmt.setInt(2,year);
+			stmt.setInt(3,semester);
+			stmt.registerOutParameter(4,oracle.jdbc.OracleTypes.CURSOR);
+			stmt.registerOutParameter(5,oracle.jdbc.OracleTypes.NUMBER);
+			stmt.registerOutParameter(6,oracle.jdbc.OracleTypes.NUMBER);
+			stmt.execute();
+			
+			myResultSet = (ResultSet)stmt.getObject(4);
+			int sumCourse  = stmt.getInt(5);
+			int sumUnit = stmt.getInt(6);
 			while (myResultSet.next()) {
 				String c_id = myResultSet.getString("c_id");
 				int c_id_no = myResultSet.getInt("c_id_no");
@@ -70,11 +75,13 @@
 				href="delete.jsp?c_id=<%=c_id%>&c_id_no=<%=c_id_no%>">삭제</a></td>
 	</tr>
 	<%
-			}
-		}
+			}%>
+	</table>
+<h3 align="center">총 <%=sumCourse %> 과목, <%=sumUnit %> 학점 신청하셨습니다.</h3>
+	<%
 		stmt.close();
 		myConn.close();
 	%>
-</table>
+
 
 <%@ include file="footer.jsp"%>
