@@ -1,29 +1,29 @@
 @import url(https://fonts.googleapis.com/css?family=Open+Sans:300,400);
-.blue {
+.color1 {
   background: #3498db;
 }
 
-.purple {
+.color2 {
   background: #9b59b6;
 }
 
-.navy {
+.color3 {
   background: #34495e;
 }
 
-.green {
+.color4 {
   background: #2ecc71;
 }
 
-.red {
+.color5 {
   background: #e74c3c;
 }
 
-.orange {
+.color6 {
   background: #f39c12;
 }
 
-.cs335, .cs426, .md303, .md352, .md313, .cs240 {
+.mouseon {
   font-weight: 300;
   cursor: pointer;
 }
