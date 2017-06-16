@@ -9,14 +9,36 @@
 <%  
 	String sMessage = "변경이 완료되었습니다.";
 	try{
-		String s_pwd = (String)request.getParameter("userpw");
-		Statement stmt = null;
-		ResultSet rs = null;
-		String mySQL = "update students set s_pwd = '"+s_pwd +"' where s_id = "+session_id;
-
-		stmt = myConn.createStatement();
-		rs = stmt.executeQuery(mySQL);
-
+		int check = request.getAttribute("check");
+		String formPass = request.getParameter("userpw");
+		String formName = request.getParameter("username");
+		String formAddr = request.getParameter("useraddr");
+		String formEmail = request.getParameter("useremail");
+		
+		PreparedStatement pstmt = null;
+		
+		if (check == 1) {
+		%>
+		String sql = "UPDATE students set s_pwd=?,s_addr=?,s_email=? where s_id =?";        
+		pstmt = conn.prepareStatement(sql);
+		pstmt.setString(1, formPass);
+		pstmt.setString(2, formAddr);
+		pstmt.setString(3, formEmail);
+		pstmt.setString(4, session_id);
+		pstmt.executeUpdate();
+	
+		<%
+		}
+		else if (check == 2) {
+		%>
+		String sql = "UPDATE professor set p_pwd=?,p_email=? where p_id =?";        
+		pstmt = conn.prepareStatement(sql);
+		pstmt.setString(1, formPass);
+		pstmt.setString(2, formEmail);
+		pstmt.setString(3, session_id);
+		pstmt.executeUpdate();
+		<%
+		}
 		
      } catch(SQLException ex) {
   	   
