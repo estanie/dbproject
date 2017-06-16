@@ -2,8 +2,6 @@
 <%@ page import="java.sql.*"%>
 <%@ include file="top.jsp"%>
 <%@ include file="dbconfig.jsp" %>
-<html>
-	<body>
 		<table width="75%" align="center" border>
 			<thead>
 				<th>학번</th>
@@ -39,5 +37,4 @@
 %>
 </tbody>
 </table>
-</body>
-</html>
+<%@ include file="footer.jsp"%>

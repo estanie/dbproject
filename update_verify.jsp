@@ -1,7 +1,8 @@
-<%@ page contentType="text/html; charset=UTF-8" %>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ page import="java.sql.*" %>
 <%@ include file="top.jsp" %>
 <%@ include file="dbconfig.jsp" %>
+<!DOCTYPE html>
 <html>
 <head><title> 수강신청 사용자 정보 수정 </title></head>
 <body>
@@ -18,26 +19,22 @@
 		PreparedStatement pstmt = null;
 		
 		if (check.equals("1")) {
-		%>
 		String sql = "UPDATE students set s_pwd=?,s_addr=?,s_email=? where s_id =?";        
-		pstmt = conn.prepareStatement(sql);
+		pstmt = myConn.prepareStatement(sql);
 		pstmt.setString(1, formPass);
 		pstmt.setString(2, formAddr);
 		pstmt.setString(3, formEmail);
-		pstmt.setString(4, session_id);
+		pstmt.setInt(4, session_id);
 		pstmt.executeUpdate();
 	
-		<%
 		}
 		else if (check.equals("2")) {
-		%>
 		String sql = "UPDATE professor set p_pwd=?,p_email=? where p_id =?";        
-		pstmt = conn.prepareStatement(sql);
+		pstmt = myConn.prepareStatement(sql);
 		pstmt.setString(1, formPass);
 		pstmt.setString(2, formEmail);
-		pstmt.setString(3, session_id);
+		pstmt.setInt(3, session_id);
 		pstmt.executeUpdate();
-		<%
 		}
 		
      } catch(SQLException ex) {

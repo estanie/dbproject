@@ -10,16 +10,16 @@
 <%@ include file="top.jsp"%>
 <%@ include file="dbconfig.jsp" %>
 <%
-/*
-	if (session_id == null){*/
+
+	if (session_id == null){
 		%>
 		<script>
-		//	alert("로그인이 필요합니다.");
-		//	location.href = "login.jsp";
+			alert("로그인이 필요합니다.");
+			location.href = "login.jsp";
 		</script>
-		<%/*
+		<%
 	}
-	else{*/
+	else{
 		Statement stmt  = null;
 		stmt = myConn.createStatement();
 		int idx = Integer.parseInt(request.getParameter("idx"));
@@ -109,7 +109,7 @@
   <%
 		int total = 0;
 		
-		String sqlList = "SELECT ID, CONTENT from comenttable where REF="+idx;
+		String sqlList = "SELECT comment_id, comment_content from commenttable where comment_ref="+idx;
 		rs = stmt.executeQuery(sqlList);
 		
 %>

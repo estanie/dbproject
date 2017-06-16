@@ -1,12 +1,12 @@
 <%@ page contentType="text/html; charset=UTF-8"%>
 <%@ page import="java.sql.*"%>
-<html>
 <head>
 	<title>내 강의 조회</title>
 </head>
-<body>
+
 <%@ include file="top.jsp" %>
 <%@ include file="dbconfig.jsp" %>
+
 <%
 	if (session_id == null)
 		response.sendRedirect("login.jsp");
@@ -65,5 +65,4 @@
 		myConn.close();
 	%>
 </table>
-</body>
-</html>
+<%@ include file="footer.jsp"%>

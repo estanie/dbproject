@@ -21,7 +21,7 @@
 			
 			stmt = myConn.createStatement();
 		
-			String sql = "SELECT PASSWORD FROM board WHERE NUM=" + idx;
+			String sql = "SELECT b_pwd FROM board WHERE b_no=" + idx;
 			ResultSet rs = stmt.executeQuery(sql);
 		
 		 if(rs.next()){
@@ -29,7 +29,7 @@
 		 }
 		
 		 if(password.equals(passw)) {
-				sql = "UPDATE board SET TITLE='" + title+ "' ,MEMO='"+ memo +"' WHERE NUM=" + idx;				
+				sql = "UPDATE board SET b_title='" + title+ "' ,b_content='"+ memo +"' WHERE b_no=" + idx;				
 				stmt.executeUpdate(sql);
 				
 %>
@@ -51,5 +51,4 @@
 			</script>
 <%			
 		}
-
 %>

@@ -1,10 +1,8 @@
 <%@ page contentType="text/html; charset=UTF-8"%>
 <%@ page import="java.sql.*"%>
-<html>
 <head>
 <title>코스 생성</title>
 </head>
-<body>
 	<%@ include file="top.jsp"%>
 	<%
 		if (session_id == null)
@@ -86,8 +84,6 @@
 
 	</form>
 	<%} %>
-</body>
-</html>
 
 
 

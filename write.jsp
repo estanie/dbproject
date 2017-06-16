@@ -107,6 +107,6 @@ function writeCheck()
  </center>
  </div>
 </div>
-<%@ include file="footer2.jsp" %>
+<%@ include file="link.jsp" %>
 </div>
 <%@ include file="footer.jsp"%>
