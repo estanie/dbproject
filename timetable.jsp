@@ -3,6 +3,7 @@
     <%@ page import="java.io.*"%>
 <%@ page import="java.sql.*"%>
 <%@ include file="top.jsp"%>
+<%@ include file="dbconfig.jsp" %>
 <link rel="stylesheet" href="table.css">
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -12,6 +13,51 @@
 </head>
 <body>
 <!-- / College Timetable -->
+<%
+	class Course{
+	String c_name;
+	String t_where;
+	public Course(String c_name, String t_where){
+		this.c_name = c_name;
+		this.t_where = t_where;
+	}
+}
+
+Course[][] cour = new Course[8][5];
+
+if (session_id == null){ %>
+<script>
+	alert("로그인이 필요합니다.");
+	location.href="login.jsp";
+	</script>
+<% }
+	else {
+		
+		Statement stmt  = null;
+		stmt = myConn.createStatement();
+		String sql = "select c.c_name, t.t_where, t.t_day, t.t_time"
+				+" from course c, enroll e, teach t"
+				+" where e.C_ID=c.C_ID and e.C_ID_NO=c.C_ID_NO and e.s_id = "+session_id
+				+" and e.e_semester = DATE2ENROLLSEMESTER(SYSDATE) and e.e_year = DATE2ENROLLYEAR(SYSDATE)"
+				+" and t.C_ID = e.c_id and t.C_ID_NO = e.c_id_no";
+		ResultSet rs = stmt.executeQuery(sql);
+		while (rs.next()){
+			String c_name = rs.getString(1);
+			String t_where = rs.getString(2);
+			int t_day = rs.getInt(3);
+			int t_time = rs.getInt(4);
+			if (t_day == 1)
+				cour[t_time][0] = cour[t_time][2] = new Course(c_name, t_where);
+			else if (t_day == 2)
+				cour[t_time][1] = cour[t_time][3] = new Course(c_name, t_where);
+			else
+				cour[t_time][4] = cour[t_time+1][4] = new Course(c_name,t_where);
+			%>
+			
+			<%
+			
+		}
+	%>
 <div class='tab'>
   <table border='0' cellpadding='0' cellspacing='0'>
     <tr class='days'>
@@ -22,79 +68,20 @@
       <th>Thursday</th>
       <th>Friday</th>
     </tr>
+    <% for (int i = 0;i<7;i++) {%>
     <tr>
-      <td class='time'>1</td>
-      <td class='cs335 blue' data-tooltip='Software Engineering &amp; Software Process'>CS335 [JH1]</td>
-      <td class='cs426 purple' data-tooltip='Computer Graphics'>CS426 [CS1]</td>
+      <td class='time'><%=i+1 %></td>
+      <%for (int j = 0;j<5;j++) {
+      if (cour[i][j]!=null){%>
+      <td class='cs335 blue' data-tooltip='Software Engineering &amp; Software Process'><%=cour[i][j].c_name %> <%=cour[i][j].t_where %></td>
+      <% }
+      else {%>
       <td></td>
-      <td></td>
-      <td>-</td>
+      <%}} %>
     </tr>
-    <tr>
-      <td class='time'>2</td>
-      <td></td>
-      <td class='cs335 blue lab' data-tooltip='Software Engineering &amp; Software Process'>CS335 [Lab]</td>
-      <td class='md352 green' data-tooltip='Multimedia Production &amp; Management'>MD352 [Kairos]</td>
-      <td></td>
-      <td>-</td>
-    </tr>
-    <tr>
-      <td class='time'>3</td>
-      <td></td>
-      <td class='cs335 blue lab' data-tooltip='Software Engineering &amp; Software Process'>CS335 [Lab]</td>
-      <td class='md352 green' data-tooltip='Multimedia Production &amp; Management'>MD352 [Kairos]</td>
-      <td class='cs240 orange' data-tooltip='Operating Systems'>CS240 [CH]</td>
-      <td>-</td>
-    </tr>
-    <tr>
-      <td class='time'>4</td>
-      <td></td>
-      <td class='md303 navy' data-tooltip='Media &amp; Globalisation'>MD303 [CS2]</td>
-      <td class='md313 red' data-tooltip='Special Topic: Multiculturalism &amp; Nationalism'>MD313 [Iontas]</td>
-      <td></td>
-      <td>-</td>
-    </tr>
-    <tr>
-      <td class='time'>5</td>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td>-</td>
-    </tr>
-    <tr>
-      <td class='time'>6</td>
-      <td></td>
-      <td></td>
-      <td class='cs426 purple' data-tooltip='Computer Graphics'>CS426 [CS2]</td>
-      <td class='cs240 orange' data-tooltip='Operating Systems'>CS240 [TH1]</td>
-      <td>-</td>
-    </tr>
-    <tr>
-      <td class='time'>7</td>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td class='cs240 orange lab' data-tooltip='Operating Systems'>CS240 [Lab]</td>
-      <td>-</td>
-    </tr>
-    <tr>
-      <td class='time'>8</td>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td class='cs240 orange lab' data-tooltip='Operating Systems'>CS240 [Lab]</td>
-      <td>-</td>
-    </tr>
-    <tr>
-      <td class='time'>9</td>
-      <td class='cs335 blue' data-tooltip='Software Engineering &amp; Software Process'>CS335 [TH1]</td>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td>-</td>
-    </tr>
+    <%} %>
   </table>
 </div>
+<% } %>
 </body>
 </html>
