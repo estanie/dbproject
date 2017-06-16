@@ -83,6 +83,8 @@
 		</table></div>
 		</fieldset>
 		</br></br></br></br></br></br></br></br>
+		request.setAttritube("check", 1);
+
 <% }
  else {
 	String mySQL2 = "select p_name from professor where p_id=" + session_id + "";
@@ -132,6 +134,7 @@
 		</table></div>
 		</fieldset>
 		</br></br></br></br></br></br></br></br>
+		request.setAttritube("check", 2);
 				<%
 				}
 		}
