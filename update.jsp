@@ -53,10 +53,10 @@
 				<td colspan="3" class="blank02"></td>
 				</tr>
 				<tr>
-				<td class="input"><input type="text" id="username" name="username" title="이름" class="formText formText_Email" /></td>
+				<td class="input"><input type="text" id="username" name="username" title="이름" class="formText formText_Name" /></td>
 				</tr>
 				<tr>
-				<td class="input"><input type="text" id="useraddr" name="useraddr" title="주소" class="formText formText_Name" /></td>
+				<td class="input"><input type="text" id="useraddr" name="useraddr" title="주소" class="formText formText_Email" /></td>
 				</tr>
 				<tr>
 				<td colspan="3" class="blank02"></td>
@@ -104,7 +104,7 @@
 				<td colspan="3" class="blank02"></td>
 				</tr>
 				<tr>
-				<td class="input"><input type="text" id="username" name="username" title="이름" class="formText formText_Email" /></td>
+				<td class="input"><input type="text" id="username" name="username" title="이름" class="formText formText_Name" /></td>
 				</tr>
 				<tr>
 				<td colspan="3" class="blank02"></td>
