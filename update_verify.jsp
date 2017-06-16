@@ -9,7 +9,7 @@
 <%  
 	String sMessage = "변경이 완료되었습니다.";
 	try{
-		int check = request.getAttribute("check");
+		String check = request.getAttribute("check");
 		String formPass = request.getParameter("userpw");
 		String formName = request.getParameter("username");
 		String formAddr = request.getParameter("useraddr");
@@ -17,7 +17,7 @@
 		
 		PreparedStatement pstmt = null;
 		
-		if (check == 1) {
+		if (check.equals("1")) {
 		%>
 		String sql = "UPDATE students set s_pwd=?,s_addr=?,s_email=? where s_id =?";        
 		pstmt = conn.prepareStatement(sql);
@@ -29,7 +29,7 @@
 	
 		<%
 		}
-		else if (check == 2) {
+		else if (check.equals("2")) {
 		%>
 		String sql = "UPDATE professor set p_pwd=?,p_email=? where p_id =?";        
 		pstmt = conn.prepareStatement(sql);
