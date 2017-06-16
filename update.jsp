@@ -28,13 +28,14 @@
 				Statement stmt = null;
 				ResultSet rs = null;
 				ResultSet prs = null;
-				String mySQL = "select s_pwd from students where s_id=" + session_id + "";
+				String mySQL = "select s_name from students where s_id=" + session_id + "";
 
 				stmt = myConn.createStatement();
 				rs = stmt.executeQuery(mySQL);
 
 				if (rs != null) {
 					if (rs.next()) {
+					String name = rs.getString("s_name");
 			%>
 
 			<tbody>
@@ -53,7 +54,7 @@
 				<td colspan="3" class="blank02"></td>
 				</tr>
 				<tr>
-				<td class="input"><input type="text" id="username" name="username" title="이름" class="formText formText_Name" /></td>
+				<td class="input"><input type="hidden" id="username" name="username" title="이름" value="<%=name%>" class="formText formText_Name" /></td>
 				</tr>
 				<tr>
 				<td class="input"><input type="text" id="useraddr" name="useraddr" title="주소" class="formText formText_Email" /></td>
@@ -84,9 +85,10 @@
 		</br></br></br></br></br></br></br></br>
 <% }
  else {
-	String mySQL2 = "select p_id from professor where p_id=" + session_id + "";
+	String mySQL2 = "select p_name from professor where p_id=" + session_id + "";
 	 prs = stmt.executeQuery(mySQL2);
 	if (prs.next()) {
+	String name = prs.getString("p_name");
 	 %>
 				<tbody>
 				<tr>
@@ -104,7 +106,7 @@
 				<td colspan="3" class="blank02"></td>
 				</tr>
 				<tr>
-				<td class="input"><input type="text" id="username" name="username" title="이름" class="formText formText_Name" /></td>
+				<td class="input"><input type="hidden" id="username" name="username" title="이름" value="<%=name%>" class="formText formText_Name" /></td>
 				</tr>
 				<tr>
 				<td colspan="3" class="blank02"></td>
