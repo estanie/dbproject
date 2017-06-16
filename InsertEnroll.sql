@@ -72,12 +72,12 @@ DBMS_OUTPUT.put_line(sStudentId || '님이 과목번호 ' || sCourseId ||
   INTO   nCnt
   FROM
   (
-	  SELECT t_time
+	  SELECT t_time,t_day
 	  FROM teach
 	  WHERE t_year=nYear and t_semester = nSemester and
 	        c_id = sCourseId and c_id_no = nCourseIdNo
 	  INTERSECT
-	  SELECT t.t_time
+	  SELECT t.t_time, t.t_day
 	  FROM	teach t, enroll e
 	  WHERE	e.s_id=sStudentId and e.e_year=nYear and e.e_semester = nSemester and
 		t.t_year=nYear and t.t_semester = nSemester and

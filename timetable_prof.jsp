@@ -44,7 +44,7 @@ if (session_id == null){ %>
 			String c_name = rs.getString(1);
 			String t_where = rs.getString(2);
 			int t_day = rs.getInt(3);
-			int t_time = rs.getInt(4);
+			int t_time = rs.getInt(4)-1;
 			if (t_day == 1)
 				cour[t_time][0] = cour[t_time][2] = new Course(c_name, t_where);
 			else if (t_day == 2)
