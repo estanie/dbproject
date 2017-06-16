@@ -90,5 +90,3 @@ request.setCharacterEncoding("utf-8"); // 한글 처리 구문
 			</header>
 		</div>
 	</div>
-</body>
-</html>
