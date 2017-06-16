@@ -27,13 +27,13 @@ CREATE TABLE teach (
     p_id NUMBER(10),
     t_year NUMBER(4),
     t_semester VARCHAR(1),
-    t_time NUMBER(2),--¿ù/¼ö, È­,¸ñ, ±İ ±³½Ã
-    t_day NUMBER(1), --1 : ¿ù/¼ö, 2: È­/¸ñ, 3: ±İ
+    t_time NUMBER(2),--ì›”/ìˆ˜, í™”,ëª©, ê¸ˆ êµì‹œ
+    t_day NUMBER(1), --1 : ì›”/ìˆ˜, 2: í™”/ëª©, 3: ê¸ˆ
     t_max NUMBER(3),
     t_where VARCHAR(20),
     CONSTRAINT t_c_id_fk FOREIGN KEY (c_id,c_id_no) REFERENCES COURSE(c_id,c_id_no),
     CONSTRAINT t_p_id_fk FOREIGN KEY (p_id) REFERENCES PROFESSOR(p_id),
-    CONSTRAINT t_pk PRIMARY KEY(p_id, t_time, t_year, t_semester)
+    CONSTRAINT t_pk PRIMARY KEY(p_id, t_year, t_semester, t_time, t_day)
  );
  
  CREATE TABLE ENROLL (
