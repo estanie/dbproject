@@ -83,7 +83,7 @@
 		</table></div>
 		</fieldset>
 		</br></br></br></br></br></br></br></br>
-		request.setAttritube("check", 1);
+		request.setAttritube("check", "1");
 
 <% }
  else {
@@ -134,7 +134,7 @@
 		</table></div>
 		</fieldset>
 		</br></br></br></br></br></br></br></br>
-		request.setAttritube("check", 2);
+		request.setAttritube("check", "2");
 				<%
 				}
 		}
