@@ -1,6 +1,7 @@
  CREATE TABLE STUDENTS (
     s_id NUMBER(10) CONSTRAINT s_pk PRIMARY KEY,
     s_pwd VARCHAR(20),
+    s_name VARCHAR(10),
     s_major VARCHAR(20),
     s_addr VARCHAR(30),
     s_email VARCHAR(50)
@@ -9,6 +10,7 @@
  CREATE TABLE PROFESSOR (
     p_id NUMBER(10) CONSTRAINT p_pk PRIMARY KEY,
     p_pwd VARCHAR(20),
+    p_name VARCHAR(10),
     p_major VARCHAR(20),
     p_email VARCHAR(50)
  );
@@ -23,7 +25,7 @@
  
 CREATE TABLE teach (
     c_id VARCHAR(4),
-    c_id_no NUMBER(2) ,
+    c_id_no NUMBER(2),
     p_id NUMBER(10),
     t_year NUMBER(4),
     t_semester VARCHAR(1),
@@ -48,22 +50,24 @@ CREATE TABLE teach (
  );
  
  CREATE TABLE BOARD(
-num NUMBER(10) CONSTRAINT b_pk PRIMARY KEY,
-username VARCHAR(20),
-password VARCHAR(20),
-title VARCHAR(20) NOT NULL,
-memo VARCHAR(500),
-hit NUMBER(10)
+    b_no NUMBER(10) CONSTRAINT b_pk PRIMARY KEY,
+    b_name VARCHAR2(20),
+    b_pwd VARCHAR2(20),
+    b_title VARCHAR2(20) NOT NULL,
+    p_name VARCHAR2(20),
+    b_content VARCHAR2(1000),
+    b_regdate VARCHAR2(10),
+    b_hit NUMBER(10)
 );
 
-CREATE SEQUENCE num
-  START WITH 1
-  INCREMENT BY 1
-  MAXVALUE 9999999999;
+CREATE SEQUENCE b_no
+    START WITH 1
+    INCREMENT BY 1
+    MAXVALUE 9999999999;
   
-  
-CREATE TABLE COMENTTABLE(
-id VARCHAR(20),
-content VARCHAR(100),
-ref NUMBER(10)
+CREATE TABLE COMMENTTABLE(
+    comment_id VARCHAR(20),
+    comment_content VARCHAR(100),
+    comment_ref NUMBER(10),
+    CONSTRAINT comment_fk FOREIGN KEY (comment_ref) REFERENCES BOARD(b_no)
 );
