@@ -50,12 +50,29 @@
 					</div></td>
 			</tr>
 			<tr>
+							<td>
+					<div align="center">수업 요일 설정 </div>
+				</td>
+				<td><div align="center">
+						<input type="text" name="courseDate">
+					</div></td>
+			</tr>
+			<tr>
 				<td>
 					<div align="center">수업 시간 설정 </div>
 				</td>
 				<td><div align="center">
 						<input type="text" name="courseTime">
 					</div></td>
+				
+				<tr>
+				<td>
+					<div align="center">수업 장소 선택 </div>
+				</td>
+				<td><div align="center">
+						<input type="text" name="courseWhere">
+					</div></td>
+					
 			</tr>
 			<tr>
 				<td colspan=2><div align="center">
