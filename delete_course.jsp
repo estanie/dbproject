@@ -4,20 +4,21 @@
 <%@ include file="dbconfig.jsp" %>
 <%
 	String c_id = request.getParameter("c_id");
+	int c_id_no = Integer.parseInt(request.getParameter("c_id_no"));
 	Statement stmt = null;
 	String mySQL = null;
 	stmt = myConn.createStatement();
-	mySQL = "delete from teach where c_id='" + c_id + "' and p_id=" + session_id + "";
+	mySQL = "delete from teach where c_id='" + c_id + "' and c_id_no = "+c_id_no+" and p_id=" + session_id;
 	int re = stmt.executeUpdate(mySQL);
 
 	if (re!=0) { %>
 		<script>
-		  alert("삭제되었습니다..");
+		  alert("삭제되었습니다.");
 		  location.href="select_course.jsp";
 		</script>
 <% 	} else { %>
 	<script>
-		  alert("오류..");
+		  alert("오류.");
 		  location.href="select_course.jsp";
 		</script>
 <% }
