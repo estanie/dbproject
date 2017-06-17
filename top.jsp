@@ -24,7 +24,6 @@
 <link rel="stylesheet" href="css/style.css">
 <link rel="stylesheet" href="css/layout.css"
 	media="screen and (max-width:1080px)">
-<link rel="stylesheet" href="css/table.css">
 
 <style>
 #headwrap {

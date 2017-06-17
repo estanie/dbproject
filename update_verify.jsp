@@ -10,15 +10,14 @@
 <%  
 	String sMessage = "변경이 완료되었습니다.";
 	try{
-		String check = request.getAttribute("check");
 		String formPass = request.getParameter("userpw");
 		String formName = request.getParameter("username");
 		String formAddr = request.getParameter("useraddr");
 		String formEmail = request.getParameter("useremail");
-		
+
 		PreparedStatement pstmt = null;
 		
-		if (check.equals("1")) {
+		if (session_identity == "student") {
 		String sql = "UPDATE students set s_pwd=?,s_addr=?,s_email=? where s_id =?";        
 		pstmt = myConn.prepareStatement(sql);
 		pstmt.setString(1, formPass);
@@ -28,7 +27,7 @@
 		pstmt.executeUpdate();
 	
 		}
-		else if (check.equals("2")) {
+		else if (session_identity == "professor") {
 		String sql = "UPDATE professor set p_pwd=?,p_email=? where p_id =?";        
 		pstmt = myConn.prepareStatement(sql);
 		pstmt.setString(1, formPass);

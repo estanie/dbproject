@@ -34,7 +34,7 @@
 		stmt.execute();
 %>
 <script>	
-	alert("생성됨 "); 
+	alert("생성되었습니다."); 
 	location.href="create_course.jsp";
 </script>
 <%		
