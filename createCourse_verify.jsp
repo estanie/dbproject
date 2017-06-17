@@ -5,40 +5,36 @@
 <%
 	String c_id = request.getParameter("courseId");
 	String c_name = request.getParameter("courseName");
-	int c_id_no = 1;
+	int c_id_no = Integer.parseInt(request.getParameter("courseIdNo"));
 	int c_unit = Integer.parseInt(request.getParameter("courseUnit"));
 	int t_time = Integer.parseInt(request.getParameter("courseTime"));
 	int t_max = Integer.parseInt(request.getParameter("courseMax"));
 	int t_day = Integer.parseInt(request.getParameter("courseDate"));
 	String t_where = request.getParameter("courseWhere");
+	String result = null;
 	CallableStatement stmt = null;
-	String mySQL = null;
-	String mySQL2 = null;
-	stmt = myConn.prepareCall("insert into course values(?,?,?,?)");
-	stmt.setString(1, c_id);
-	stmt.setInt(2, 1);
-	stmt.setInt(3,c_unit);
-	stmt.setString(4,c_name);
-	
 	try  {  	
-		stmt.execute();
-		stmt = myConn.prepareCall("insert into teach values(?,?,?,DATE2ENROLLYEAR(SYSDATE), DATE2ENROLLSEMESTER(SYSDATE), ?,?,?,?)");
-		stmt.setString(1, c_id);
-		stmt.setInt(2,c_id_no);
-		stmt.setInt(3, session_id);
-		stmt.setInt(4,t_time);
-		stmt.setInt(5,t_day);
+		stmt = myConn.prepareCall("call InsertTeach(?,?,?,?,?,?,?,?,?,?)");
+		
+		stmt.setInt(1, session_id);
+		stmt.setString(2, c_id);
+		stmt.setInt(3,c_id_no);
+		stmt.setString(4,c_name);
+		stmt.setInt(5,c_unit);
 		stmt.setInt(6,t_max);
-		stmt.setString(7,t_where);
-
+		stmt.setInt(7,t_day);
+		stmt.setInt(8,t_time);
+		stmt.setString(9,t_where);
+		stmt.registerOutParameter(10,oracle.jdbc.OracleTypes.VARCHAR);
 		stmt.execute();
+		result = stmt.getString(10);
 %>
-<script>	
-	alert("생성되었습니다."); 
-	location.href="create_course.jsp";
+<script>
+	alert("<%= result %>");
+	history.back();
 </script>
 <%		
-	} catch(SQLException ex) {		
+	} catch(SQLException ex) {
 		 System.err.println("SQLException: " + ex.getMessage());
 	}  
 	finally {

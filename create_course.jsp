@@ -5,10 +5,10 @@
 </head>
 <%@ include file="top.jsp"%>
 <%
-		if (session_id == null)
-			response.sendRedirect("login.jsp");
-		else {
-	%>
+	if (session_id == null)
+		response.sendRedirect("login.jsp");
+	else {
+%>
 <form method="post" action="createCourse_verify.jsp">
 	<table width="75%" align="center" border>
 		<tr>
@@ -24,7 +24,14 @@
 					<input type="text" name="courseId">
 				</div></td>
 		</tr>
-
+		<tr>
+			<td>
+			<div align="center">강의 분반 번호</div>
+			</td>
+			<td><div align="center">
+					<input type="text" name="courseIdNo">
+				</div></td>
+		</tr>
 		<tr>
 			<td>
 				<div align="center">강의명</div>
@@ -53,12 +60,14 @@
 			<td>
 				<div align="center">수업 요일 설정</div>
 			</td>
-			<td><div align="center"><select name="courseDate">
-					<option value="1" selected="selected">월,수</option>
-					<option value="2">화,목</option>
-					<option value="3">금</option>
-			</select>
-			</div>
+			<td><div align="center">
+					<select name="courseDate">
+						<option value="">요일 선택</option>
+						<option value="1">월,수</option>
+						<option value="2">화,목</option>
+						<option value="3">금</option>
+					</select>
+				</div>
 		</tr>
 		<tr>
 			<td>
@@ -97,7 +106,9 @@
 
 
 </form>
-<%} %>
+<%
+	}
+%>
 
 
 
