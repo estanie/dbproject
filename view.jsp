@@ -118,7 +118,7 @@
 												<input type=button value="수정"
 												OnClick="window.location='modify.jsp?idx=<%=idx%>'">
 												<input type=button value="삭제"
-												OnClick="window.location='delete.jsp?idx=<%=idx%>'">
+												OnClick="window.location='delete_board.jsp?idx=<%=idx%>'">
 											<td width="0">&nbsp;</td>
 										</tr>
 									</table>

@@ -8,6 +8,7 @@
 </head>
 <body>
 <%@ include file="top.jsp"%> 
+
 <script language = "javascript"> // 자바 스크립트 시작
 
 function writeCheck()
@@ -44,6 +45,13 @@ function writeCheck()
  
   form.submit();
   }
+var oEditors = [];
+nhn.husky.EZCreator.createInIFrame({
+    oAppRef: oEditors,
+    elPlaceHolder: "ir1",
+    sSkinURI: "editor/SmartEditor2Skin.html",
+    fCreator: "createSEditor2"
+});
  </script>
 		<div id="containerwrap">
 			<div id="container">
@@ -81,14 +89,14 @@ function writeCheck()
     <tr>
       <td>&nbsp;</td>
       <td align="center">비밀번호</td>
-      <td><input name="password" size="50" maxlength="50"></td>
+      <td><input type="password" name="password" size="50" maxlength="50"></td>
       <td>&nbsp;</td>
      </tr>
      <tr height="1" bgcolor="#dddddd"><td colspan="4"></td></tr>
      <tr>
       <td>&nbsp;</td>
       <td align="center">내용</td>
-      <td><textarea name="memo" cols="50" rows="13"></textarea></td>
+      <td><textarea name="ir1" id="ir1" rows="10" cols="100" placeholder="상세한 평가 부탁드립니다."></textarea></td>
       <td>&nbsp;</td>
      </tr>
      <tr height="1" bgcolor="#dddddd"><td colspan="4"></td></tr>
@@ -109,3 +117,4 @@ function writeCheck()
 </div>
 </div>
 <%@ include file="footer.jsp"%>
+<script type="text/javascript" src="editor/js/service/HuskyEZCreator.js" charset="utf-8"></script>

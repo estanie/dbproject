@@ -42,7 +42,7 @@
 									}
 									
 									else if (session_identity == "professor") {
-										mySQL = "select p_name,p_email, p_pwd from professor where p_id=" + session_id + "and p+pwd='"+ver_pwd+"'";
+										mySQL = "select p_name,p_email, p_pwd from professor where p_id=" + session_id + "and p_pwd='"+ver_pwd+"'";
 									}
 									stmt = myConn.createStatement();
 									rs = stmt.executeQuery(mySQL);
@@ -61,8 +61,9 @@
 												col_email = "p_email";
 												col_pwd = "p_pwd";
 											}
+										String addr = null;
 										String name = rs.getString(col_name);
-										String addr = rs.getString(col_addr);
+										if (session_identity=="student") {addr = rs.getString(col_addr);};
 										String email = rs.getString(col_email);
 										String passwd = rs.getString(col_pwd);
 								%>
