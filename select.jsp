@@ -29,31 +29,19 @@
 		<th>수강신청</th>
 	</tr>
 	<%
-		CallableStatement cstmt = null;
-		CallableStatement cstmt2 = null;
-		cstmt = myConn.prepareCall("{? = call Date2EnrollSemester(SYSDATE)}");
-		cstmt.registerOutParameter(1,java.sql.Types.INTEGER);
-		cstmt.execute();
-		int semester = cstmt.getInt(1);
-		cstmt2 = myConn.prepareCall("{? = call Date2EnrollYear(SYSDATE)}");
-		cstmt2.registerOutParameter(1,java.sql.Types.INTEGER);
-		cstmt2.execute();
-		int year = cstmt2.getInt(1);
 		CallableStatement stmt = null;
 		ResultSet myResultSet = null;
-		String mySQL = "{call SelectTimeTable(?,?,?,?,?,?)}";
+		String mySQL = "{call SelectTimeTable(?,?,?,?)}";
 			stmt = myConn.prepareCall(mySQL);
 			stmt.setInt(1,session_id);
-			stmt.setInt(2,year);
-			stmt.setInt(3,semester);
-			stmt.registerOutParameter(4,oracle.jdbc.OracleTypes.CURSOR);
-			stmt.registerOutParameter(5,oracle.jdbc.OracleTypes.NUMBER);
-			stmt.registerOutParameter(6,oracle.jdbc.OracleTypes.NUMBER);
+			stmt.registerOutParameter(2,oracle.jdbc.OracleTypes.CURSOR);
+			stmt.registerOutParameter(3,oracle.jdbc.OracleTypes.NUMBER);
+			stmt.registerOutParameter(4,oracle.jdbc.OracleTypes.NUMBER);
 			stmt.execute();
-			
-			myResultSet = (ResultSet)stmt.getObject(4);
-			int sumCourse  = stmt.getInt(5);
-			int sumUnit = stmt.getInt(6);
+
+			myResultSet = (ResultSet)stmt.getObject(2);
+			int sumCourse  = stmt.getInt(3);
+			int sumUnit = stmt.getInt(4);
 			while (myResultSet.next()) {
 				String c_id = myResultSet.getString("c_id");
 				int c_id_no = myResultSet.getInt("c_id_no");
@@ -82,6 +70,4 @@
 		stmt.close();
 		myConn.close();
 	%>
-
-
 <%@ include file="footer.jsp"%>

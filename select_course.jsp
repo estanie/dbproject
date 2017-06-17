@@ -26,15 +26,18 @@
 		<th>수업 삭제</th>
 	</tr>
 	<%
-		Statement stmt = null;
-		ResultSet myResultSet = null;
-		String mySQL = "";
-			stmt = myConn.createStatement();
-		mySQL = "select c.c_id,c.c_id_no,c.c_name,c.c_unit,t.t_day, t.t_time , t.t_where from course c, teach t where c.c_id in (select c_id from teach where p_id="
-				+ session_id + " and t_semester = DATE2ENROLLSEMESTER(SYSDATE) and t_year = DATE2ENROLLYEAR(SYSDATE)) and t.c_id = c.c_id and t.c_id_no = c.c_id_no";
-
-		myResultSet = stmt.executeQuery(mySQL);
-
+	CallableStatement stmt = null;
+	ResultSet myResultSet = null;
+	String mySQL = "{call SelectTimeTableProfessor(?,?,?,?)}";
+		stmt = myConn.prepareCall(mySQL);
+		stmt.setInt(1,session_id);
+		stmt.registerOutParameter(2,oracle.jdbc.OracleTypes.CURSOR);
+		stmt.registerOutParameter(3,oracle.jdbc.OracleTypes.NUMBER);
+		stmt.registerOutParameter(4,oracle.jdbc.OracleTypes.NUMBER);
+		stmt.execute();
+		myResultSet = (ResultSet)stmt.getObject(2);
+		int sumCourse  = stmt.getInt(3);
+		int sumUnit = stmt.getInt(4);
 		if (myResultSet != null) {
 			while (myResultSet.next()) {
 				String c_id = myResultSet.getString("c_id");
@@ -65,4 +68,5 @@
 		myConn.close();
 	%>
 </table>
+	<h3 align="center">총 <%=sumCourse %> 과목, <%=sumUnit %> 학점 수업입니다.</h3>
 <%@ include file="footer.jsp"%>

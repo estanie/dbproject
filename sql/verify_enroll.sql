@@ -1,11 +1,13 @@
 CREATE OR REPLACE PROCEDURE SelectTimeTable (sStudentId IN NUMBER,
-					    nYear      IN NUMBER,
-					    nSemester  IN NUMBER,
               student_course OUT SYS_REFCURSOR,
               sumCourse OUT NUMBER,
               sumUnit OUT NUMBER)
 IS
+  nYear       NUMBER;
+  nSemester   NUMBER;
 BEGIN
+  nYear := Date2EnrollYear(SYSDATE);
+  nSemester := Date2EnrollSemester(SYSDATE);
   OPEN student_course FOR
     SELECT c.c_id, c.c_id_no, c.c_name, c.c_unit, t.t_where, t.t_time, t.t_day 
     from teach t, course c, enroll e
