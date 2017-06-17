@@ -1,4 +1,3 @@
-
 <%@ page contentType="text/html; charset=UTF-8"%>
 <%@ page import="java.sql.*"%>
 <html>
@@ -39,7 +38,7 @@ function deleteCheck()
 					<!-- .pointBox --><center>
 					<div class="pointBox">
 <table>
-<form name=deleteform method=post action="delete_ok.jsp?idx=<%=idx%>">
+<form name=deleteform method=post action="delete_board_ok.jsp?idx=<%=idx%>">
   <tr>
    <td>
     <table width="100%" cellpadding="0" cellspacing="0" border="0">

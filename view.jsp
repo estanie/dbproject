@@ -1,5 +1,4 @@
-
-<%@ page contentType="text/html; charset=UTF-8"%>
+]<%@ page contentType="text/html; charset=UTF-8"%>
 <%@ page import="java.sql.*"%>
 <%@ page import="java.util.Date"%>
 <html>
@@ -10,7 +9,6 @@
 	<%@ include file="top.jsp"%>
 	<%@ include file="dbconfig.jsp"%>
 	<%
-
 	if (session_id == null){
 		%>
 	<script>
@@ -101,7 +99,6 @@
 										<% 
  	sql = "UPDATE board SET b_hit=" + hit + " where b_no=" +idx;
  	stmt.executeUpdate(sql);
-
 	 	}
 %>
 										<tr height="1" bgcolor="#dddddd">
@@ -164,13 +161,12 @@
 								<table align="center" width="630" border="0" cellspacing="0"
 									cellpadding="0">
 									<tr>
-										<td align="center"><input type="hidden" name="boardNo"
-											value="<%=idx %>"> <input name="writer" type="text"
-											size="20" maxlength="10"> <input name="content"
-											type="text" size="40" maxlength="300"> <a
-											href="javascript:comAdd();"> <img src="bbicon.png"
-												border="0">
-										</a></td>
+										<td align="center">
+											<input type="hidden" name="boardNo" value="<%=idx %>">
+										 	<input name="writer" type="text" size="20" maxlength="10">
+										 	<input name="content" type="button" value="등록하기" size="40" maxlength="300">
+										 	<a href="javascript:comAdd();"></a>
+										</td>
 									</tr>
 								</table>
 							</form>

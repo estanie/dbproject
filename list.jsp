@@ -22,10 +22,8 @@
 					Statement stmt = null;
 					int total = 0;
 					stmt = myConn.createStatement();
-
 					String sqlCount = "SELECT COUNT(*) FROM board";
 					ResultSet rs = stmt.executeQuery(sqlCount);
-
 					if (rs.next()) {
 						total = rs.getInt(1);
 					}
@@ -37,6 +35,7 @@
 				<form action="search_list.jsp" method="post">
 					<select name="keyfield">
 						<option value="1">작성자</option>
+						<option value="2">제목</option>
 					</select> <input type="text" name="searchKey" /> <input type="submit"
 						value="검색" />
 				</form>
@@ -44,22 +43,19 @@
 				<br />
 				<%
 					String sqlList = "SELECT b_no, b_name, b_title, b_hit from board";
-
 					rs = stmt.executeQuery(sqlList);
 				%>
 				<table width="100%" cellpadding="0" cellspacing="0" border="0">
 					<tr height="5">
 						<td width="5"></td>
 					</tr>
-					<tr
-						style="background: url('table_mid.gif') repeat-x; text-align: center;">
-						<td width="5"><img src="table_left.gif" width="5" height="30" /></td>
+					<tr style="background: url('table_mid.gif') repeat-x; text-align: center;">
+						<td width="5" align="left"><img src="table_left.gif" width="5" height="30" /></td>
 						<td width="73">번호</td>
 						<td width="379">제목</td>
 						<td width="73">작성자</td>
 						<td width="58">조회수</td>
-						<td width="7"><img src="table_right.gif" width="5"
-							height="30" /></td>
+						<td width="7"><img src="table_right.gif" width="5" height="30" /></td>
 					</tr>
 					<%
 						if (total == 0) {
@@ -69,7 +65,6 @@
 					</tr>
 					<%
 						} else {
-
 							while (rs.next()) {
 								int idx = rs.getInt(1);
 								String name = rs.getString(2);
@@ -77,7 +72,7 @@
 								int hit = rs.getInt(4);
 					%>
 					<tr height="25" align="center">
-						<td>&nbsp;</td>
+						<td width="5">&nbsp;</td>
 						<td><%=idx%></td>
 						<td align="left"><a href="view.jsp?idx=<%=idx%>"><%=title%></td>
 						<td align="center"><%=name%></td>
