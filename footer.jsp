@@ -9,7 +9,7 @@
 			RESERVED.</p>
 
 		<div class="btn_top">
-			<a href="#top"><img src="btn_top.gif" alt="TOP" /></a>
+			<a href="#top"><img src="image/btn_top.gif" alt="TOP" /></a>
 		</div>
 	</footer>
 </div>

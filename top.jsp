@@ -60,7 +60,7 @@
 						<%
 							if (session_identity == "professor") {
 						%>
-						<li class="gnb01 "><a href="update.jsp" style="color: white;">내정보 수정</a></li>
+						<li class="gnb01 "><a href="update_before.jsp" style="color: white;">내정보 수정</a></li>
 						<li class="gnb02 "><a href="create_course.jsp"
 							style="color: white;">수업 생성</a></li>
 						<li class="gnb03 "><a href="select_course.jsp"
@@ -69,12 +69,11 @@
 							style="color: white;">강의 시간표</a></li>
 						<li class="gnb05 "><a href="list.jsp" style="color: white;">강의평 조회</a></li>
 						<li class="gnb06 "><a href="map.jsp" style="color: white;">오시는 길</a></li>
-
 						<%
 							} else {
 						%>
 
-						<li class="gnb01 "><a href="update.jsp" style="color: white;">내	정보 수정</a></li>
+						<li class="gnb01 "><a href="update_before.jsp" style="color: white;">내	정보 수정</a></li>
 						<li class="gnb02 "><a href="insert.jsp" style="color: white;">수강신청</a></li>
 						<li class="gnb03 "><a href="select.jsp" style="color: white;">내	수강 정보 조회</a></li>
 						<li class="gnb04 "><a href="timetable.jsp" style="color: white;">나의 시간표</a></li>

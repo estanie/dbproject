@@ -11,13 +11,12 @@
 <% Statement stmt  = null;
 	String ww = request.getParameter("writer"); //write.jsp에서 name에 입력한 데이터값
 	String cc = request.getParameter("content"); //write.jsp에서 memo에 입력한 데이터값
-	String iidx = request.getParameter("boardNo");
-	int iiidx = Integer.parseInt(iidx);
+	int iiidx = Integer.parseInt(request.getParameter("boardNo"));
 	   int max = 0;
 
 			stmt = myConn.createStatement();
 			
-			String sql = "INSERT INTO comenttable(ID, CONTENT, REF) VALUES(?,?,?)";
+			String sql = "INSERT INTO commenttable(comment_id, comment_content, comment_ref) VALUES(?,?,?)";
 			PreparedStatement pstmt = myConn.prepareStatement(sql);
 			
 			pstmt.setString(1, ww);

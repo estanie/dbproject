@@ -28,7 +28,7 @@
 								</script>
 								<%
 									} else {
-
+									String ver_pwd = (String) request.getParameter("userpw");
 									Statement stmt = null;
 									ResultSet rs = null;
 									String mySQL = null;
@@ -38,11 +38,11 @@
 									String col_pwd = null;
 									
 									if (session_identity == "student"){
-										mySQL = "select s_name,s_addr,s_email, s_pwd from students where s_id=" + session_id + "";
+										mySQL = "select s_name,s_addr,s_email, s_pwd from students where s_id=" + session_id + "and s_pwd ='"+ver_pwd+"'";
 									}
 									
 									else if (session_identity == "professor") {
-										mySQL = "select p_name,p_email, p_pwd from professor where p_id=" + session_id + "";
+										mySQL = "select p_name,p_email, p_pwd from professor where p_id=" + session_id + "and p+pwd='"+ver_pwd+"'";
 									}
 									stmt = myConn.createStatement();
 									rs = stmt.executeQuery(mySQL);
@@ -83,7 +83,7 @@
 									<tr>
 										<td>비밀번호</td>
 										<td class="input"><input type="password" id="userpw"
-											name="userpw" title="비밀번호" class="formText formText_Pass"
+											name="userpw" title="비밀번호" class="formText formText_Pass" value="<%=passwd %>"
 											onkeypress="if(event.keyCode=='13'){userLogin();}" /></td>
 									</tr>
 									<tr>
@@ -134,7 +134,12 @@
 					</br> </br> </br> </br> </br> </br> </br> </br>
 
 					<%
-						}
+						} else{ %>
+							<script>
+							alert("비밀번호가 틀립니다.");
+							history.back();
+						</script>
+						<% }
 													}
 									stmt.close();myConn.close();	}
 					%>
