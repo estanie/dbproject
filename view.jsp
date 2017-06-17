@@ -102,7 +102,6 @@
  	sql = "UPDATE board SET b_hit=" + hit + " where b_no=" +idx;
  	stmt.executeUpdate(sql);
 
- //	myConn.close();
 	 	}
 %>
 										<tr height="1" bgcolor="#dddddd">
@@ -124,8 +123,7 @@
 										</tr>
 									</table>
 									<div>
-										<br />
-										<br />
+										<br /> <br />
 									</div>
 								</td>
 							</tr>
@@ -157,10 +155,6 @@
 								<% 
 		}
   	}
-	rs.close();
-	stmt.close();
-	//myConn.close();
-//}
 %>
 							</table>
 							<br />
@@ -171,7 +165,7 @@
 									cellpadding="0">
 									<tr>
 										<td align="center"><input type="hidden" name="boardNo"
-											value="<%=idx%>"> <input name="writer" type="text"
+											value="<%=idx %>"> <input name="writer" type="text"
 											size="20" maxlength="10"> <input name="content"
 											type="text" size="40" maxlength="300"> <a
 											href="javascript:comAdd();"> <img src="bbicon.png"
@@ -196,4 +190,8 @@
 			</div>
 		</div>
 	</div>
+	<% 	rs.close();
+	stmt.close();
+	myConn.close();
+} %>
 	<%@ include file="footer.jsp"%>
