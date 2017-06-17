@@ -21,8 +21,8 @@
 <script type="text/javascript" src="common.js"></script>
 <script type="text/javascript" src="comm_api.js"></script>
 <script type="text/javascript" src="detect-mobile.js"></script>
-<link rel="stylesheet" href="style.css">
-<link rel="stylesheet" href="layout.css" media="screen and (max-width:1080px)">
+<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="css/layout.css" media="screen and (max-width:1080px)">
 <style>
 #headwrap {
 	background-color: navy;
@@ -36,7 +36,7 @@
 		<div id="headwrap">
 			<header id="header">
 				<h1>
-					<a href="main.jsp" title="홈 바로가기"><img src="bblogo.png"
+					<a href="main.jsp" title="홈 바로가기"><img src="image/bblogo.png"
 						alt="로고" /></a>
 				</h1>
 				<div class="util">
@@ -50,7 +50,7 @@
 						%>
 						<li>
 						<li style="float: right"><a href="logout.jsp" style="color: white;">로그아웃</a></li>
-						<li style="float: right;"><a href="update.jsp" style="color:white;"><%=session_name%></a></li>
+						<li style="float: right;"><a href="update_before.jsp" style="color:white;"><%=session_name%></a></li>
 						<%
 							}
 						%>
@@ -62,7 +62,7 @@
 						<%
 							if (session_identity == "professor") {
 						%>
-						<li class="gnb01 "><a href="update.jsp" style="color: white;">내정보 수정</a></li>
+						<li class="gnb01 "><a href="update_before.jsp" style="color: white;">내정보 수정</a></li>
 						<li class="gnb02 "><a href="create_course.jsp" style="color: white;">수업 생성</a></li>
 						<li class="gnb03 "><a href="select_course.jsp" style="color: white;">내	수업 조회</a></li>
 						<li class="gnb04 "><a href="timetable_prof.jsp" style="color: white;">강의 시간표</a></li>
