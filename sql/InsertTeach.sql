@@ -66,7 +66,7 @@ DBMS_OUTPUT.put_line(professorId || '님이 과목번호 ' || pCourseId ||
   END IF;
 
    /* 에러 처리 4 : 금요일인데 정시 시작 아니고 다른 시간 시작일 경우  */
-  IF (pTeachDay = 3 and MOD(pTeachTime,2) = 1)
+  IF (pTeachDay = 3 and MOD(pTeachTime,2) = 0)
   THEN
     RAISE friday_not_start_oclock;
   END IF;
