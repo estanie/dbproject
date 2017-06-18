@@ -1,4 +1,4 @@
-<%@ page contentType="text/html; charset=UTF-8"%>
+]<%@ page contentType="text/html; charset=UTF-8"%>
 <%@ page import="java.sql.*"%>
 <%@ page import="java.util.Date"%>
 <html>
@@ -47,11 +47,11 @@
 								<td>
 									<table width="100%" cellpadding="0" cellspacing="0" border="0">
 										<tr
-											style="background: url('table_mid.gif') repeat-x; text-align: center;">
-											<td width="5"><img src="table_left.gif" width="5"
+											style="background: url('image/table_mid.gif') repeat-x; text-align: center;">
+											<td width="5"><img src="image/table_left.gif" width="5"
 												height="30" /></td>
 											<td>내 용</td>
-											<td width="5"><img src="table_right.gif" width="5"
+											<td width="5"><img src="image/table_right.gif" width="5"
 												height="30" /></td>
 										</tr>
 									</table>
@@ -164,8 +164,8 @@
 										<td align="center">
 											<input type="hidden" name="boardNo" value="<%=idx %>">
 										 	<input name="writer" type="text" size="20" maxlength="10">
-										 	<input name="content" type="button" value="등록하기" size="40" maxlength="300">
-										 	<a href="javascript:comAdd();"></a>
+										 	<input name="content" type="text" size="40" maxlength="300">
+										 	<a href="javascript:comAdd();"><input name="content" type="button" value="등록하기" size="40" maxlength="300"></a>
 										</td>
 									</tr>
 								</table>

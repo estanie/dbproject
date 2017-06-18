@@ -1,12 +1,18 @@
 <%@ page contentType="text/html; charset=UTF-8"%>
 <%@ page import="java.sql.*"%>
-<head>
-<title>내 강의 조회</title>
-</head>
-
 <%@ include file="top.jsp"%>
 <%@ include file="dbconfig.jsp"%>
-
+<head>
+	<title>내 강의 조회</title>
+	<style>
+		tr:hover{
+			background-color: lightgrey;
+		}
+		a:hover{
+			color: #f62217;
+		}
+	</style>
+</head>
 <%
 	if (session_id == null)
 		response.sendRedirect("login.jsp");
@@ -18,9 +24,10 @@
 				<span>수업 시간표</span>
 			</h1>
 		</div>
+		<center>
 		<table width="75%" align="center" border>
 			<br />
-			<tr>
+			<tr bgcolor="lightgrey">
 				<th>과목번호</th>
 				<th>분반</th>
 				<th>과목명</th>
@@ -62,10 +69,8 @@
 				<td align="center"><%=t_day%></td>
 				<td align="center"><%=t_time%></td>
 				<td align="center"><%=t_where%></td>
-				<td align="center"><a
-					href="view_student.jsp?c_id=<%=c_id%>&c_id_no=<%=c_id_no%>">조회</a></td>
-				<td align="center"><a
-					href="delete_course.jsp?c_id=<%=c_id%>&c_id_no=<%=c_id_no%>">삭제</a></td>
+				<td align="center"><a href="view_student.jsp?c_id=<%=c_id%>&c_id_no=<%=c_id_no%>">조회</a></td>
+				<td align="center"><a href="delete_course.jsp?c_id=<%=c_id%>&c_id_no=<%=c_id_no%>">삭제</a></td>
 			</tr>
 			<%
 				}
@@ -74,13 +79,14 @@
 				myConn.close();
 			%>
 		</table>
-		<h3 align="center">
+		<h3 align="center" style="margin-top: 5em">
 			총
 			<%=sumCourse%>
 			과목,
 			<%=sumUnit%>
 			학점 수업입니다.
 		</h3>
+		</center>
 	</div>
 </div>
 <%@ include file="footer.jsp"%>

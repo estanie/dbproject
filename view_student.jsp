@@ -9,14 +9,15 @@
 				<span>수강생 조회</span>
 			</h1>
 		</div>
+		
+		<center>
 		<table width="75%" align="center" border>
-			<thead>
+			<thead bgcolor="lightgrey">
 				<th>학번</th>
 				<th>이름</th>
 				<th>전공</th>
 			</thead>
-			<tbody>
-				<%
+			<%
 					ResultSet rs = null;
 					String c_id = request.getParameter("c_id");
 					int c_id_no = Integer.parseInt(request.getParameter("c_id_no"));
@@ -33,6 +34,7 @@
 						String s_major = rs.getString("s_major");
 						int s_id = rs.getInt("s_id");
 				%>
+			<tbody>
 				<tr>
 					<td align="center"><%=s_id%></td>
 					<td align="center"><%=s_name%></td>
@@ -45,6 +47,7 @@
 				%>
 			</tbody>
 		</table>
+		</center>
 	</div>
 </div>
 <%@ include file="footer.jsp"%>

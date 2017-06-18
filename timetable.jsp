@@ -89,6 +89,7 @@ if (session_id == null){ %>
 			</h1>
 		</div>
 		<div class='tab'>
+		<center>
 			<table border='0' cellpadding='0' cellspacing='0'>
 				<tr class='days'>
 					<th></th>
@@ -113,6 +114,7 @@ if (session_id == null){ %>
 				</tr>
 				<%} %>
 			</table>
+			</center>
 		</div>
 		<% } %>
 	</div>
