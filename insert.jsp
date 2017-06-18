@@ -2,6 +2,14 @@
 <%@ page import="java.sql.*"%>
 <head>
 <title>수강신청</title>
+<style>
+a:hover{
+	color: #f62217;
+}
+tr:hover{
+	background-color:lightgrey;
+}
+</style>
 </head>
 <%@ include file="top.jsp"%>
 <%@ include file="dbconfig.jsp"%>
@@ -44,7 +52,7 @@
 
 		<table width="75%" align="center" border>
 			<br />
-			<tr>
+			<tr style="background-color:lightgrey">
 				<th>과목번호</th>
 				<th>분반</th>
 				<th>과목명</th>
@@ -76,8 +84,7 @@
 				<td align="center"><%=t_day%></td>
 				<td align="center"><%=t_time%></td>
 				<td align="center"><%=t_where%></td>
-				<td align="center"><a
-					href="insert_verify.jsp?c_id=<%=c_id%>&c_id_no=<%=c_id_no%>">신청</a></td>
+				<td align="center"><a href="insert_verify.jsp?c_id=<%=c_id%>&c_id_no=<%=c_id_no%>">신청</a></td>
 			</tr>
 			<%
 				}
