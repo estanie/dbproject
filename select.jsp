@@ -3,6 +3,15 @@
 
 <head>
 <title>내 강의 조회</title>
+	<style>
+		tr:hover{
+			background-color: lightgrey;
+		}
+		a:hover{
+			color: #f62217;
+		}
+	</style>
+
 </head>
 <%@ include file="top.jsp"%>
 <%@ include file="dbconfig.jsp"%>
@@ -25,7 +34,7 @@
 		</div>
 		<table width="75%" align="center" border>
 			<br />
-			<tr>
+			<tr  style="background: lightgrey">
 				<th>과목번호</th>
 				<th>분반</th>
 				<th>과목명</th>
@@ -73,7 +82,7 @@
 				}
 			%>
 		</table>
-		<h3 align="center">
+		<h3 align="center" style="margin: 3em;">
 			총
 			<%=sumCourse%>
 			과목,

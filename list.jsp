@@ -49,13 +49,13 @@
 					<tr height="5">
 						<td width="5"></td>
 					</tr>
-					<tr style="background: url('table_mid.gif') repeat-x; text-align: center;">
-						<td width="5" align="left"><img src="table_left.gif" width="5" height="30" /></td>
+					<tr style="background: url('image/table_mid.gif') repeat-x; text-align: center;">
+						<td width="5" align="left"><img src="image/table_left.gif" width="5" height="30" /></td>
 						<td width="73">번호</td>
 						<td width="379">제목</td>
 						<td width="73">작성자</td>
 						<td width="58">조회수</td>
-						<td width="7"><img src="table_right.gif" width="5" height="30" /></td>
+						<td width="7"><img src="image/table_right.gif" width="5" height="30" /></td>
 					</tr>
 					<%
 						if (total == 0) {
